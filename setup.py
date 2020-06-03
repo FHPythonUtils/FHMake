@@ -50,6 +50,7 @@ setup(
         'Topic :: Software Development :: Libraries :: Python Modules',
         'Topic :: Utilities'
     ],
+    entry_points={"console_scripts": ["fhmake = fhmake:cli"]},
     packages=['FHMake'],
     package_dir={"": "."},
     package_data={},

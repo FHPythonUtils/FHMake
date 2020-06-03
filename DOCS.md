@@ -20,3 +20,5 @@ cli entry point
 <a name=".fhmake.__main__"></a>
 ## fhmake.\_\_main\_\_
 
+entry point for python -m fhmake
+

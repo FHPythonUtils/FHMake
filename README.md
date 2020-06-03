@@ -20,6 +20,8 @@ FredHappyface Makefile for python. Run one of the following subcommands:
 - security: Run some basic security checks that are not run in vscode
 - publish: Run poetry publish
 
+<!-- omit in toc -->
+## Table of Contents
 - [Changelog](#changelog)
 - [Install With PIP](#install-with-pip)
 - [Language information](#language-information)
