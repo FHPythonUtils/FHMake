@@ -21,7 +21,7 @@ if os.path.exists(readme_path):
 setup(
     long_description=readme,
     name='fhmake',
-    version='2020',
+    version='2020.0.1',
     description='Provides multiple methods to hide and retrieve data',
     python_requires='==3.*,>=3.5.0',
     project_urls={
