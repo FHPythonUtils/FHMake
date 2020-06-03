@@ -34,6 +34,12 @@ fhmake = 'fhmake:cli'
 
 [tool.poetry.dependencies]
 python = "^3.5"
+bandit = "^1.6.2"
+dlint = "^0.10.3"
+safety = "^1.9.0"
+dodgy = "^0.2.1"
+poetry = "^1.0.5"
+pydoc-markdown = "^3.0.2"
 
 
 [tool.dephell.main]
