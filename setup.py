@@ -21,7 +21,7 @@ if os.path.exists(readme_path):
 setup(
     long_description=readme,
     name='fhmake',
-    version='2020.0.1',
+    version='2020.0.2',
     description='Provides multiple methods to hide and retrieve data',
     python_requires='==3.*,>=3.5.0',
     project_urls={
@@ -54,5 +54,9 @@ setup(
     packages=['FHMake'],
     package_dir={"": "."},
     package_data={},
-    install_requires=[],
+    install_requires=[
+        'bandit==1.*,>=1.6.2', 'dlint==0.*,>=0.10.3', 'dodgy==0.*,>=0.2.1',
+        'poetry==1.*,>=1.0.5', 'pydoc-markdown==3.*,>=3.0.2',
+        'safety==1.*,>=1.9.0'
+    ],
 )
