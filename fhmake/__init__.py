@@ -8,8 +8,19 @@ publish: Run poetry publish
 from subprocess import Popen
 from shlex import split
 import argparse
+from platform import system
+from tomlkit import loads
+
+
+def _getPyproject():
+	""" get the pyproject data """
+	with open("pyproject.toml") as pyproject:
+		return loads(pyproject.read())
+
 
 HELP = "subcommand must be one of [install, build, security, publish]"
+PYPROJECT = _getPyproject()
+PACKAGE_NAME = PYPROJECT["tool"]["poetry"]["name"]
 
 
 def _doSysExec(command, failOnNonZero=True):
@@ -44,7 +55,13 @@ def cli():
 
 	if args.subcommand == "build":
 		print("Building docs, requirements.txt, setup.py, poetry build")
-		_doSysExec("pydoc-markdown > DOCS.md")
+		_doSysExec("pdoc3 ./" + PACKAGE_NAME + " -o ./DOCS --force")
+		if system() == "Windows": # windows is a snowflake
+			_doSysExec("powershell.exe -command mv -force ./DOCS/" + PACKAGE_NAME +
+			"/* ./DOCS; rm -r ./DOCS/" + PACKAGE_NAME)
+		else:
+			_doSysExec("mv ./DOCS/" + PACKAGE_NAME + "/* ./DOCS; rm -r DOCS/" +
+			PACKAGE_NAME)
 		_doSysExec("dephell deps convert --envs=main")
 		_doSysExec("dephell deps convert --to setup.py")
 		_doSysExec("poetry build")
