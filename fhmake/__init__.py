@@ -58,10 +58,10 @@ def cli():
 		_doSysExec("pdoc3 ./" + PACKAGE_NAME + " -o ./DOCS --force")
 		if system() == "Windows": # windows is a snowflake
 			_doSysExec("powershell.exe -command mv -force ./DOCS/" + PACKAGE_NAME +
-			"/* ./DOCS; rm -r ./DOCS/" + PACKAGE_NAME)
+			"/* ./DOCS; rm -r ./DOCS/" + PACKAGE_NAME + ";mv -force ./DOCS/index.md ./DOCS/readme.md")
 		else:
 			_doSysExec("mv ./DOCS/" + PACKAGE_NAME + "/* ./DOCS; rm -r DOCS/" +
-			PACKAGE_NAME)
+			PACKAGE_NAME + "mv ./DOCS/index.md ./DOCS/readme.md")
 		_doSysExec("dephell deps convert --envs=main")
 		_doSysExec("dephell deps convert --to setup.py")
 		_doSysExec("poetry build")
