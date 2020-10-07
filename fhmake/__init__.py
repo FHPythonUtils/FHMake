@@ -5,6 +5,8 @@ build: Building docs, requirements.txt, setup.py, poetry build
 security: Run some basic security checks that are not run in vscode
 publish: Run poetry publish
 """
+from shutil import copy, move, rmtree
+from glob import glob
 from subprocess import Popen
 from shlex import split
 import argparse
@@ -47,6 +49,49 @@ def _doSysExec(command, failOnNonZero=True):
 		" may be missing a dependency")
 
 
+def _build():
+	# Generate DOCS
+	_doSysExec("pdoc3 ./" + PACKAGE_NAME + " -o ./DOCS --force")
+	for filePath in glob("./DOCS/" + PACKAGE_NAME + "/*"):
+		move(filePath, "./DOCS")
+	rmtree("./DOCS/" + PACKAGE_NAME)
+	move("./DOCS/index.md", "./DOCS/readme.md")
+	# Generate requirements.txt
+	_doSysExec("dephell deps convert --envs=main")
+	copy("requirements.txt", "requirements_optional.txt")
+	with open("requirements.txt", "r+") as reqsFile:
+		unfilteredReqs = reqsFile.readlines()
+		dependencies = PYPROJECT["tool"]["poetry"]["dependencies"]
+		for requirement in dependencies:
+			if isinstance(dependencies[requirement], dict) and "optional" in \
+			dependencies[requirement] and dependencies[requirement]["optional"]:
+				for req in unfilteredReqs:
+					if requirement in req:
+						unfilteredReqs.remove(req)
+		reqsFile.seek(0)
+		reqsFile.writelines(unfilteredReqs)
+		reqsFile.truncate()
+	# Generate setup.py
+	_doSysExec("dephell deps convert --to setup.py")
+	# Generate dist files
+	_doSysExec("poetry build")
+
+
+def _install():
+	_doSysExec("poetry install")
+
+
+def _security():
+	_doSysExec("poetry export -f requirements.txt | safety check --stdin")
+	_doSysExec("dodgy")
+	_doSysExec("bandit -li --exclude **/test_*.py -s B322 -r -q .", False)
+	_doSysExec("flake8 --select=DUO .", False)
+
+
+def _publish():
+	_doSysExec("poetry publish")
+
+
 def cli():
 	""" cli entry point """
 	parser = argparse.ArgumentParser(description=__doc__)
@@ -55,28 +100,15 @@ def cli():
 
 	if args.subcommand == "build":
 		print("Building docs, requirements.txt, setup.py, poetry build")
-		_doSysExec("pdoc3 ./" + PACKAGE_NAME + " -o ./DOCS --force")
-		if system() == "Windows": # windows is a snowflake
-			_doSysExec("powershell.exe -command mv -force ./DOCS/" + PACKAGE_NAME +
-			"/* ./DOCS; rm -r ./DOCS/" + PACKAGE_NAME + ";mv -force ./DOCS/index.md ./DOCS/readme.md")
-		else:
-			_doSysExec("mv ./DOCS/" + PACKAGE_NAME + "/* ./DOCS; rm -r DOCS/" +
-			PACKAGE_NAME + "mv ./DOCS/index.md ./DOCS/readme.md")
-		_doSysExec("dephell deps convert --envs=main")
-		_doSysExec("dephell deps convert --to setup.py")
-		_doSysExec("poetry build")
+		_build()
 	elif args.subcommand == "install":
 		print("Poetry install")
-		_doSysExec("poetry install")
+		_install()
 	elif args.subcommand == "security":
 		print("Checking deps, and code")
-		_doSysExec("poetry export -f requirements.txt | safety check --stdin")
-		_doSysExec("dodgy")
-		_doSysExec("python -m bandit -li --exclude **/test_*.py -s B322 -r -q .",
-		False)
-		_doSysExec("python -m flake8 --select=DUO .", False)
+		_security()
 	elif args.subcommand == "publish":
 		print("Poetry publish")
-		_doSysExec("poetry publish")
+		_publish()
 	else:
 		print(HELP)

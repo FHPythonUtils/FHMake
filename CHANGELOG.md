@@ -2,6 +2,11 @@
 All major and minor version changes will be documented in this file. Details of
 patch-level version changes can be found in [commit messages](../../commits/master).
 
+## 2020.2 - 2020/10/07
+- Some requirements are optional (if installed with something like pipx)
+- Optional requirements are now included in `requirements_optional.txt`
+  and are excluded from `requirements.txt`
+
 ## 2020.1.1 - 2020/07/12
 - tomlkit = ">=0.5.11,<0.7"
 

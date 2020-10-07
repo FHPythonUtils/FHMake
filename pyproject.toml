@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "fhmake"
-version = "2020.1.1"
+version = "2020.2"
 description = "Provides multiple methods to hide and retrieve data"
 authors = ["FredHappyface"]
 classifiers = [
@@ -14,7 +14,6 @@ classifiers = [
 	"Natural Language :: English",
 	"Operating System :: OS Independent",
 	"Programming Language :: Python :: 3",
-	"Programming Language :: Python :: 3.5",
 	"Programming Language :: Python :: 3.6",
 	"Programming Language :: Python :: 3.7",
 	"Programming Language :: Python :: 3.8",
@@ -31,17 +30,18 @@ readme = "README.md"
 [tool.poetry.scripts]
 fhmake = 'fhmake:cli'
 
-
 [tool.poetry.dependencies]
-python = "^3.5"
-bandit = "^1.6.2"
-dlint = "^0.10.3"
-safety = "^1.9.0"
-dodgy = "^0.2.1"
-poetry = "^1.0.8"
-pdoc3 = "^0.8.1"
-tomlkit = ">=0.5.11,<0.7"
+python = "^3.6"
+tomlkit = ">=0.7"
+bandit = { version = "^1.6.2", optional = true }
+dlint = { version = "^0.10.3", optional = true }
+dodgy = { version = "^0.2.1", optional = true }
+poetry = { version = "^1.1.2", optional = true }
+safety = { version = "^1.9.0", optional = true }
+pdoc3 = "^0.9.1"
 
+[tool.poetry.extras]
+full = ["bandit", "dlint", "dodgy", "poetry", "safety"]
 
 [tool.dephell.main]
 from = "pyproject.toml"
