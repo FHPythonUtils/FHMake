@@ -113,7 +113,10 @@ def _build():
 	packageName = str(POETRY["name"])
 	# Generate DOCS
 	print(f"{BLD}{UL}{CB}Building{CLS}\n\n{BLD}{UL}{CG}Documentation{CLS}")
-	rmtree("./DOCS/")
+	try:
+		rmtree("./DOCS/")
+	except FileNotFoundError:
+		pass
 	print(_doSysExec("pdoc3 ./" + packageName +	" -o ./DOCS --force")[1].replace("\\", "/"))
 	for filePath in glob("./DOCS/" + packageName + "/*"):
 		move(filePath, "./DOCS")

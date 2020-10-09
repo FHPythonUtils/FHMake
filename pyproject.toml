@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "fhmake"
-version = "2020.2.3"
+version = "2020.2.4"
 description = "Provides multiple methods to hide and retrieve data"
 authors = ["FredHappyface"]
 classifiers = [

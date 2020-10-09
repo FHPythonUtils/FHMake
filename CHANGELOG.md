@@ -2,6 +2,9 @@
 All major and minor version changes will be documented in this file. Details of
 patch-level version changes can be found in [commit messages](../../commits/master).
 
+## 2020.2.4 - 2020/10/09
+- bugfix on remove /docs/ if doesn't exist...
+
 ## 2020.2.3 - 2020/10/09
 - extras info written to requirements.txt
 - add typing
