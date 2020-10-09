@@ -6,6 +6,7 @@ install: Poetry install
 build: Building docs, requirements.txt, setup.py, poetry build
 security: Run some basic security checks that are not run in vscode
 publish: Run poetry publish
+checkreqs: check our requirements file will work with most recent pkg versions
 
 Functions
 ---------
