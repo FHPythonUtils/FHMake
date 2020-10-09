@@ -16,9 +16,15 @@ Functions
 :   cli entry point
 
     
-`genRequirements()`
-:   
+`genRequirements() ‑> NoneType`
+:   Generate the requirements files
 
     
 `procVer(version: str) ‑> str`
-:
+:   Process a version string
+    
+    Args:
+            version (str): the version
+    
+    Returns:
+            str: the processed version

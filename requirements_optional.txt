@@ -1,5 +1,5 @@
 checkrequirements==2020.*,>=2020.0.3
 pdoc3==0.*,>=0.9.1
 poetry==1.*,>=1.1.2
-simplesecurity==2020.*,>=2020.0.3
+simplesecurity[full]==2020.*,>=2020.0.3
 tomlkit>=0.7

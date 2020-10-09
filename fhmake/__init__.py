@@ -10,20 +10,23 @@ from os import remove
 from shutil import move, rmtree
 from glob import glob
 import subprocess
+import typing
 from shlex import split
 import argparse
-from tomlkit import loads
+import tomlkit
+from tomlkit import toml_document, items
 
 
-def _getPyproject():
+def _getPyproject() -> toml_document.TOMLDocument:
 	""" get the pyproject data """
 	with open("pyproject.toml") as pyproject:
-		return loads(pyproject.read())
+		return tomlkit.parse(pyproject.read())
 
 
 HELP = "subcommand must be one of [install, build, security, publish, checkreqs]"
 PYPROJECT = _getPyproject()
-PACKAGE_NAME = PYPROJECT["tool"]["poetry"]["name"]
+POETRY = typing.cast(items.Table,
+typing.cast(items.Table, PYPROJECT["tool"])["poetry"])
 
 BLD = "\033[01m"
 CLS = "\033[00m"
@@ -55,31 +58,48 @@ def _doSysExec(command: str) -> tuple[int, str]:
 
 
 def procVer(version: str) -> str:
+	"""Process a version string
+
+	Args:
+		version (str): the version
+
+	Returns:
+		str: the processed version
+	"""
 	if version.startswith("^"):
 		return f"=={version[1:].split('.')[0]}.*,>={version[1:]}"
 	return version
 
 
-def genRequirements():
-	dependencies = PYPROJECT["tool"]["poetry"]["dependencies"].copy()
+def genRequirements() -> None:
+	"""Generate the requirements files
+	"""
+	dependencies = typing.cast(
+	dict[str, typing.Union[str, dict[str, typing.Union[str, str]]]],
+	POETRY["dependencies"]).copy()
 	dependencies.pop("python")
 	requirements = []
 	requirementsOpt = []
 	for requirement in dependencies:
 		if isinstance(dependencies[requirement], dict):
-			if "optional" in \
-   dependencies[requirement] and dependencies[requirement]["optional"]:
-				requirementsOpt.append(
-				f"{requirement}{procVer(dependencies[requirement]['version'])}")
+			dependent = typing.cast(dict[str, typing.Union[str, str]],
+			dependencies[requirement])
+			if "optional" in dependent and dependent["optional"]:
+				requirementsOpt.append(f"{requirement}" +
+				f"{'['+dependent['extras'][0]+']' if 'extras' in dependent else ''}" +
+				f"{procVer(str(dependent['version']))}")
 			else:
-				requirements.append(
-				f"{requirement}{procVer(dependencies[requirement]['version'])}")
+				requirements.append(f"{requirement}" +
+				f"{'['+dependent['extras'][0]+']' if 'extras' in dependent else ''}" +
+				f"{procVer(str(dependent['version']))}")
 		else:
-			requirements.append(f"{requirement}{procVer(dependencies[requirement])}")
+			dependent = typing.cast(str, dependencies[requirement])
+			requirements.append(f"{requirement}{procVer(dependent)}")
 	with open("requirements.txt", "w") as requirementsTxt:
 		requirementsTxt.write("\n".join(sorted(requirements)) + "\n")
 	with open("requirements_optional.txt", "w") as requirementsTxt:
-		requirementsTxt.write("\n".join(sorted(requirements + requirementsOpt)) + "\n")
+		requirementsTxt.write("\n".join(sorted(requirements + requirementsOpt)) +
+		"\n")
 	print("Done!\nTidying up old setup.py")
 	try:
 		remove("README.rst")
@@ -90,15 +110,14 @@ def genRequirements():
 
 
 def _build():
+	packageName = str(POETRY["name"])
 	# Generate DOCS
 	print(f"{BLD}{UL}{CB}Building{CLS}\n\n{BLD}{UL}{CG}Documentation{CLS}")
 	rmtree("./DOCS/")
-	print(
-	_doSysExec("pdoc3 ./" + PACKAGE_NAME +
-	" -o ./DOCS --force")[1].replace("\\", "/"))
-	for filePath in glob("./DOCS/" + PACKAGE_NAME + "/*"):
+	print(_doSysExec("pdoc3 ./" + packageName +	" -o ./DOCS --force")[1].replace("\\", "/"))
+	for filePath in glob("./DOCS/" + packageName + "/*"):
 		move(filePath, "./DOCS")
-	rmtree("./DOCS/" + PACKAGE_NAME)
+	rmtree("./DOCS/" + packageName)
 	move("./DOCS/index.md", "./DOCS/readme.md")
 	# Generate requirements.txt
 	print(f"{BLD}{UL}{CG}Requirements.txt{CLS}")
