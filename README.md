@@ -34,7 +34,6 @@ FredHappyface Makefile for python. Run one of the following subcommands:
 - [How to run](#how-to-run)
 	- [With VSCode](#with-vscode)
 	- [From the Terminal](#from-the-terminal)
-- [How to update, build and publish](#how-to-update-build-and-publish)
 - [Community Files](#community-files)
 	- [Licence](#licence)
 	- [Changelog](#changelog-1)
@@ -93,33 +92,6 @@ Interpreter > Python 3.9)
 ./[file].py
 ```
 
-## How to update, build and publish
-
-1. Ensure you have installed the following dependencies
-	Linux
-	```bash
-	wget dephell.org/install | python3.9
-	wget https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python3.9
-	```
-	Windows
-	```powershell
-	(wget dephell.org/install -UseBasicParsing).Content | python
-	(wget https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py -UseBasicParsing).Content | python
-	```
-2. Use poetry for the heavy lifting and dephell to generate requirements
-	```bash
-	poetry update
-	dephell deps convert
-	```
-3. Build/ Publish
-	```bash
-	poetry build
-	poetry publish
-	```
-	or
-	```bash
-	poetry publish --build
-	```
 ## Community Files
 ### Licence
 MIT License
