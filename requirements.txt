@@ -1,3 +1,2 @@
 pdoc3==0.*,>=0.9.1
-simplesecurity==2020.*,>=2020.0.0
 tomlkit>=0.7

@@ -6,14 +6,13 @@ security: Run some basic security checks that are not run in vscode
 publish: Run poetry publish
 checkreqs: check our requirements file will work with most recent pkg versions
 """
-from shutil import copy, move, rmtree
+from os import remove
+from shutil import move, rmtree
 from glob import glob
 import subprocess
 from shlex import split
 import argparse
 from tomlkit import loads
-from simplesecurity.plugins import bandit, safety, dodgy, dlint
-from simplesecurity.formatter import ansi
 
 
 def _getPyproject():
@@ -35,6 +34,7 @@ CY = "\033[33m"
 CR = "\033[31m"
 CODE = "\033[100m\033[93m"
 
+
 def _doSysExec(command: str) -> tuple[int, str]:
 	"""execute a command and check for errors
 	shlex.split can be used to make this safer.
@@ -54,34 +54,55 @@ def _doSysExec(command: str) -> tuple[int, str]:
 	return exitCode, out
 
 
+def procVer(version: str) -> str:
+	if version.startswith("^"):
+		return f"=={version[1:].split('.')[0]}.*,>={version[1:]}"
+	return version
+
+
+def genRequirements():
+	dependencies = PYPROJECT["tool"]["poetry"]["dependencies"].copy()
+	dependencies.pop("python")
+	requirements = []
+	requirementsOpt = []
+	for requirement in dependencies:
+		if isinstance(dependencies[requirement], dict):
+			if "optional" in \
+   dependencies[requirement] and dependencies[requirement]["optional"]:
+				requirementsOpt.append(
+				f"{requirement}{procVer(dependencies[requirement]['version'])}")
+			else:
+				requirements.append(
+				f"{requirement}{procVer(dependencies[requirement]['version'])}")
+		else:
+			requirements.append(f"{requirement}{procVer(dependencies[requirement])}")
+	with open("requirements.txt", "w") as requirementsTxt:
+		requirementsTxt.write("\n".join(sorted(requirements)) + "\n")
+	with open("requirements_optional.txt", "w") as requirementsTxt:
+		requirementsTxt.write("\n".join(sorted(requirements + requirementsOpt)) + "\n")
+	print("Done!\nTidying up old setup.py")
+	try:
+		remove("README.rst")
+		remove("setup.py")
+	except OSError:
+		pass
+	print("Done!\n")
+
+
 def _build():
 	# Generate DOCS
 	print(f"{BLD}{UL}{CB}Building{CLS}\n\n{BLD}{UL}{CG}Documentation{CLS}")
 	rmtree("./DOCS/")
-	print(_doSysExec("pdoc3 ./" + PACKAGE_NAME + " -o ./DOCS --force")[1].replace("\\", "/"))
+	print(
+	_doSysExec("pdoc3 ./" + PACKAGE_NAME +
+	" -o ./DOCS --force")[1].replace("\\", "/"))
 	for filePath in glob("./DOCS/" + PACKAGE_NAME + "/*"):
 		move(filePath, "./DOCS")
 	rmtree("./DOCS/" + PACKAGE_NAME)
 	move("./DOCS/index.md", "./DOCS/readme.md")
 	# Generate requirements.txt
 	print(f"{BLD}{UL}{CG}Requirements.txt{CLS}")
-	print(_doSysExec("dephell deps convert --envs=main")[1])
-	copy("requirements.txt", "requirements_optional.txt")
-	with open("requirements.txt", "r+") as reqsFile:
-		unfilteredReqs = reqsFile.readlines()
-		dependencies = PYPROJECT["tool"]["poetry"]["dependencies"]
-		for requirement in dependencies:
-			if isinstance(dependencies[requirement], dict) and "optional" in \
-			dependencies[requirement] and dependencies[requirement]["optional"]:
-				for req in unfilteredReqs:
-					if requirement in req:
-						unfilteredReqs.remove(req)
-		reqsFile.seek(0)
-		reqsFile.writelines(unfilteredReqs)
-		reqsFile.truncate()
-	# Generate setup.py
-	print(f"{BLD}{UL}{CG}Setup.py{CLS}")
-	print(_doSysExec("dephell deps convert --to setup.py")[1])
+	genRequirements()
 	# Generate dist files
 	print(f"{BLD}{UL}{CG}Dist files{CLS}")
 	print(_doSysExec("poetry build")[1])
@@ -94,7 +115,7 @@ def _install():
 
 
 def _security():
-	print(ansi(bandit() + safety() + dodgy() + dlint()))
+	print(_doSysExec("simplesecurity")[1])
 
 
 def _publish():

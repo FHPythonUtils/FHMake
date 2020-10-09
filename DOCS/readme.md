@@ -14,3 +14,11 @@ Functions
     
 `cli()`
 :   cli entry point
+
+    
+`genRequirements()`
+:   
+
+    
+`procVer(version: str) ‑> str`
+:

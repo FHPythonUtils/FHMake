@@ -48,9 +48,8 @@ See the [CHANGELOG](/CHANGELOG.md) for more information.
 
 ## Install With PIP
 
-Install dephell first: https://dephell.org/
-
-**"Slim" Build:** Install bandit, dlint, dodgy, poetry, and safety with pipx
+**"Slim" Build:** Install simplesecurity\[full\], poetry and checkrequirements
+with pipx
 
 ```python
 pip install fhmake

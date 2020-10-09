@@ -2,6 +2,10 @@
 All major and minor version changes will be documented in this file. Details of
 patch-level version changes can be found in [commit messages](../../commits/master).
 
+## 2020.2.2 - 2020/10/09
+- remove dephell dependency
+- don't generate setup.py any more
+
 ## 2020.2.1 - 2020/10/08
 - bugfixes
 - use simplesecurity
