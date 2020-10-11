@@ -1,10 +1,11 @@
 """FredHappyface Makefile for python. Run one of the following subcommands:
 
 install: Poetry install
-build: Building docs, requirements.txt, setup.py, poetry build
-security: Run some basic security checks that are not run in vscode
-publish: Run poetry publish
-checkreqs: check our requirements file will work with most recent pkg versions
+build: Build documentation, requirements.txt, and run poetry build
+security: Run some basic security checks
+publish: Run poetry publish (interactive)
+checkreqs: check the requirements file will work with most recent pkg versions
+licensechk: check the licences used by the requirements are compatible with this project
 """
 from __future__ import annotations
 
@@ -25,7 +26,6 @@ def _getPyproject() -> toml_document.TOMLDocument:
 		return tomlkit.parse(pyproject.read())
 
 
-HELP = "subcommand must be one of [install, build, security, publish, checkreqs]"
 PYPROJECT = _getPyproject()
 POETRY = typing.cast(items.Table,
 typing.cast(items.Table, PYPROJECT["tool"])["poetry"])
@@ -79,7 +79,8 @@ def getDependencies() -> dict[str, typing.Union[str, dict[str, str]]]:
 	Returns:
 		dict[str, str]: [description]
 	"""
-	return dict(** POETRY["dependencies"])
+	return dict(**POETRY["dependencies"])
+
 
 def genRequirements() -> None:
 	"""Generate the requirements files
@@ -93,12 +94,12 @@ def genRequirements() -> None:
 			dependent = dependencies[requirement]
 			if "optional" in dependent and dependent["optional"]: # type: ignore
 				requirementsOpt.append(f"{requirement}" +
-				f"{'['+dependent['extras'][0]+']' if 'extras' in dependent else ''}" +  # type: ignore
+				f"{'['+dependent['extras'][0]+']' if 'extras' in dependent else ''}" + # type: ignore
 				f"{procVer(dependent['version'])}") # type: ignore
 			else:
 				requirements.append(f"{requirement}" +
-				f"{'['+dependent['extras'][0]+']' if 'extras' in dependent else ''}" +  # type: ignore
-				f"{procVer(dependent['version'])}")  # type: ignore
+				f"{'['+dependent['extras'][0]+']' if 'extras' in dependent else ''}" + # type: ignore
+				f"{procVer(dependent['version'])}") # type: ignore
 		else:
 			dependent = typing.cast(str, dependencies[requirement])
 			requirements.append(f"{requirement}{procVer(dependent)}")
@@ -126,7 +127,8 @@ def _build():
 		rmtree("./DOCS/")
 	except FileNotFoundError:
 		pass
-	print(_doSysExec("pdoc3 ./" + packageName +	" -o ./DOCS --force")[1].replace("\\", "/"))
+	print(_doSysExec("pdoc3 ./" + packageName + " -o ./DOCS --force")[1]
+	.replace("\\", "/")) # yapf: disable
 	for filePath in glob("./DOCS/" + packageName + "/*"):
 		move(filePath, "./DOCS")
 	rmtree("./DOCS/" + packageName)
@@ -160,21 +162,24 @@ def _checkRequirements():
 	print(_doSysExec("checkrequirements")[1])
 
 
+def _licenseCheck():
+	print(f"{BLD}{UL}{CB}Checking Requirement Licenses{CLS}")
+	print(_doSysExec("licensecheck")[1])
+
+
+# Add new subcommands here:
+COMMAND_MAP = {"build": _build, "install": _install, "security": _security,
+"publish": _publish, "checkreqs": _checkRequirements, "licensechk": _licenseCheck} # yapf: disable
+HELP = "subcommand must be one of {}".format(list(COMMAND_MAP.keys()))
+
+
 def cli():
 	""" cli entry point """
-	parser = argparse.ArgumentParser(description=__doc__)
+	parser = argparse.ArgumentParser(
+	description=__doc__, formatter_class=argparse.RawTextHelpFormatter)
 	parser.add_argument("subcommand", action="store", help=HELP)
 	args = parser.parse_args()
-
-	if args.subcommand == "build":
-		_build()
-	elif args.subcommand == "install":
-		_install()
-	elif args.subcommand == "security":
-		_security()
-	elif args.subcommand == "publish":
-		_publish()
-	elif args.subcommand == "checkreqs":
-		_checkRequirements()
+	if args.subcommand in COMMAND_MAP:
+		COMMAND_MAP[args.subcommand]()
 	else:
 		print(HELP)

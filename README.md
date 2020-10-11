@@ -47,8 +47,8 @@ See the [CHANGELOG](/CHANGELOG.md) for more information.
 
 ## Install With PIP
 
-**"Slim" Build:** Install simplesecurity\[full\], poetry and checkrequirements
-with pipx
+**"Slim" Build:** Install simplesecurity\[full\], poetry, checkrequirements\[full\]
+and licensecheck\[full\] with pipx
 
 ```python
 pip install fhmake

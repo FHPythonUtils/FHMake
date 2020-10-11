@@ -3,10 +3,11 @@ Module fhmake
 FredHappyface Makefile for python. Run one of the following subcommands:
 
 install: Poetry install
-build: Building docs, requirements.txt, setup.py, poetry build
-security: Run some basic security checks that are not run in vscode
-publish: Run poetry publish
-checkreqs: check our requirements file will work with most recent pkg versions
+build: Build documentation, requirements.txt, and run poetry build
+security: Run some basic security checks
+publish: Run poetry publish (interactive)
+checkreqs: check the requirements file will work with most recent pkg versions
+licensechk: check the licences used by the requirements are compatible with this project
 
 Functions
 ---------

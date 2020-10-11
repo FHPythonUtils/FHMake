@@ -2,6 +2,9 @@
 All major and minor version changes will be documented in this file. Details of
 patch-level version changes can be found in [commit messages](../../commits/master).
 
+## 2020.3 - 2020/10/11
+- Add licensecheck
+
 ## 2020.2.5 - 2020/10/11
 - fix py 3.7 and 3.8
 
