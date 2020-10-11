@@ -20,6 +20,13 @@ Functions
 :   Generate the requirements files
 
     
+`getDependencies() ‑> dict`
+:   Get our dependencies as a dictionary
+    
+    Returns:
+            dict[str, str]: [description]
+
+    
 `procVer(version: str) ‑> str`
 :   Process a version string
     

@@ -6,6 +6,8 @@ security: Run some basic security checks that are not run in vscode
 publish: Run poetry publish
 checkreqs: check our requirements file will work with most recent pkg versions
 """
+from __future__ import annotations
+
 from os import remove
 from shutil import move, rmtree
 from glob import glob
@@ -71,27 +73,32 @@ def procVer(version: str) -> str:
 	return version
 
 
+def getDependencies() -> dict[str, typing.Union[str, dict[str, str]]]:
+	"""Get our dependencies as a dictionary
+
+	Returns:
+		dict[str, str]: [description]
+	"""
+	return dict(** POETRY["dependencies"])
+
 def genRequirements() -> None:
 	"""Generate the requirements files
 	"""
-	dependencies = typing.cast(
-	dict[str, typing.Union[str, dict[str, typing.Union[str, str]]]],
-	POETRY["dependencies"]).copy()
+	dependencies = getDependencies()
 	dependencies.pop("python")
 	requirements = []
 	requirementsOpt = []
 	for requirement in dependencies:
 		if isinstance(dependencies[requirement], dict):
-			dependent = typing.cast(dict[str, typing.Union[str, str]],
-			dependencies[requirement])
-			if "optional" in dependent and dependent["optional"]:
+			dependent = dependencies[requirement]
+			if "optional" in dependent and dependent["optional"]: # type: ignore
 				requirementsOpt.append(f"{requirement}" +
-				f"{'['+dependent['extras'][0]+']' if 'extras' in dependent else ''}" +
-				f"{procVer(str(dependent['version']))}")
+				f"{'['+dependent['extras'][0]+']' if 'extras' in dependent else ''}" +  # type: ignore
+				f"{procVer(dependent['version'])}") # type: ignore
 			else:
 				requirements.append(f"{requirement}" +
-				f"{'['+dependent['extras'][0]+']' if 'extras' in dependent else ''}" +
-				f"{procVer(str(dependent['version']))}")
+				f"{'['+dependent['extras'][0]+']' if 'extras' in dependent else ''}" +  # type: ignore
+				f"{procVer(dependent['version'])}")  # type: ignore
 		else:
 			dependent = typing.cast(str, dependencies[requirement])
 			requirements.append(f"{requirement}{procVer(dependent)}")
@@ -102,14 +109,16 @@ def genRequirements() -> None:
 		"\n")
 	print("Done!\nTidying up old setup.py")
 	try:
-		remove("README.rst")
 		remove("setup.py")
+		remove("README.rst")
 	except OSError:
 		pass
 	print("Done!\n")
 
 
 def _build():
+	# Deal with manual changes to pyproject.toml
+	_doSysExec("poetry update")
 	packageName = str(POETRY["name"])
 	# Generate DOCS
 	print(f"{BLD}{UL}{CB}Building{CLS}\n\n{BLD}{UL}{CG}Documentation{CLS}")
