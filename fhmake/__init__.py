@@ -8,17 +8,18 @@ checkreqs: check the requirements file will work with most recent pkg versions
 licensechk: check the licences used by the requirements are compatible with this project
 """
 from __future__ import annotations
+from sys import stdout
 
 from os import remove
 from shutil import move, rmtree
 from glob import glob
 import subprocess
 import typing
-from shlex import split
 import argparse
 import tomlkit
 from tomlkit import toml_document, items
 
+stdout.reconfigure(encoding="utf-8")
 
 def _getPyproject() -> toml_document.TOMLDocument:
 	""" get the pyproject data """
@@ -42,18 +43,14 @@ CODE = "\033[100m\033[93m"
 
 def _doSysExec(command: str) -> tuple[int, str]:
 	"""execute a command and check for errors
-	shlex.split can be used to make this safer.
-	see https://docs.python.org/3/library/shlex.html#shlex.quote
-	Note however, that we can still call _doSysExec with a malicious command
-	but this change mitigates command chaining. Ultimately, do not accept user
-	input or if you do, escape with shlex.quote(), shlex.join(shlex.split())
+
 	Args:
 		command (str): commands as a string
 	Raises:
 		RuntimeWarning: throw a warning should there be a non exit code
 	"""
-	with subprocess.Popen(split(command), shell=True, stdout=subprocess.PIPE,
-	stderr=subprocess.STDOUT, universal_newlines=True) as process:
+	with subprocess.Popen(command, shell=True, stdout=subprocess.PIPE,
+	stderr=subprocess.STDOUT, encoding="utf-8") as process:
 		out = process.communicate()[0]
 		exitCode = process.returncode
 	return exitCode, out
@@ -153,7 +150,7 @@ def _security():
 
 def _publish():
 	print(f"{BLD}{UL}{CB}Publish{CLS}")
-	with subprocess.Popen(split("poetry publish")) as process:
+	with subprocess.Popen("poetry publish") as process:
 		_ = process.wait()
 
 

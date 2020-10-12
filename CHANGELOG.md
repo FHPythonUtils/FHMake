@@ -2,6 +2,10 @@
 All major and minor version changes will be documented in this file. Details of
 patch-level version changes can be found in [commit messages](../../commits/master).
 
+## 2020.3.1 - 2020/10/12
+- set stdout to utf-8
+- remove shlex.split as things broke on linux
+
 ## 2020.3 - 2020/10/11
 - Add licensecheck
 

@@ -1,6 +1,6 @@
-checkrequirements[full]==2020.*,>=2020.0.5
-licensecheck[full]==2020.*,>=2020.0.1
+checkrequirements[full]==2020.*,>=2020.0.6
+licensecheck[full]==2020.*,>=2020.0.3
 pdoc3==0.*,>=0.9.1
 poetry==1.*,>=1.1.2
-simplesecurity[full]==2020.*,>=2020.0.3
-tomlkit>=0.7
+simplesecurity[full]==2020.*,>=2020.1.1
+tomlkit==0.*,>=0.7.0
