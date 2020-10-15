@@ -141,19 +141,13 @@ def _build():
 	# Deal with manual changes to pyproject.toml
 	print(f"{CG}(Refreshing Poetry){CLS}\n")
 	_doSysExec("poetry update")
-	packageName = str(_getPyproject()["tool"]["poetry"]["name"])
 	# Generate DOCS
 	print(f"{BLD}{UL}{CB}Building{CLS}\n\n{BLD}{UL}{CG}Documentation{CLS}")
 	try:
 		rmtree("./DOCS/")
 	except FileNotFoundError:
 		pass
-	print(_doSysExec("pdoc3 ./" + packageName + " -o ./DOCS --force")[1]
-	.replace("\\", "/")) # yapf: disable
-	for filePath in glob("./DOCS/" + packageName + "/*"):
-		move(filePath, "./DOCS")
-	rmtree("./DOCS/" + packageName)
-	move("./DOCS/index.md", "./DOCS/readme.md")
+	print(_doSysExec("fhdoc")[1].replace("\\", "/"))
 	# Generate requirements.txt
 	print(f"{BLD}{UL}{CG}Requirements.txt{CLS}")
 	genRequirements()
