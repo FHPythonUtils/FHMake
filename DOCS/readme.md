@@ -28,11 +28,15 @@ Functions
             dict[str, str]: [description]
 
     
-`procVer(version: str) ‑> str`
-:   Process a version string
+`procVer(version: str, calOnly: bool = False) ‑> str`
+:   Process a version string. This is pretty opinionated
     
     Args:
             version (str): the version
     
     Returns:
             str: the processed version
+
+    
+`updatePyproject()`
+:   Update the pyproject.toml file with our shiny new version specifiers

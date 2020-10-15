@@ -17,19 +17,20 @@ import subprocess
 import typing
 import argparse
 import tomlkit
-from tomlkit import toml_document, items
+import tomlkit.items
+from tomlkit import toml_document
 
 stdout.reconfigure(encoding="utf-8")
 
 def _getPyproject() -> toml_document.TOMLDocument:
 	""" get the pyproject data """
-	with open("pyproject.toml") as pyproject:
+	with open("pyproject.toml", encoding="utf=8") as pyproject:
 		return tomlkit.parse(pyproject.read())
 
+def _setPyproject(toml: toml_document.TOMLDocument):
+	with open("pyproject.toml", "w", encoding="utf=8") as pyproject:
+		pyproject.write(tomlkit.dumps(toml))
 
-PYPROJECT = _getPyproject()
-POETRY = typing.cast(items.Table,
-typing.cast(items.Table, PYPROJECT["tool"])["poetry"])
 
 BLD = "\033[01m"
 CLS = "\033[00m"
@@ -56,8 +57,8 @@ def _doSysExec(command: str) -> tuple[int, str]:
 	return exitCode, out
 
 
-def procVer(version: str) -> str:
-	"""Process a version string
+def procVer(version: str, calOnly: bool=False) -> str:
+	"""Process a version string. This is pretty opinionated
 
 	Args:
 		version (str): the version
@@ -66,7 +67,11 @@ def procVer(version: str) -> str:
 		str: the processed version
 	"""
 	if version.startswith("^"):
-		return f"=={version[1:].split('.')[0]}.*,>={version[1:]}"
+		major = int(version[1:].split('.')[0])
+		if not calOnly or major > 1990 or major == 0:
+			return f"<{major + 2},>={version[1:]}"
+		else:
+			return f"<{major + 1},>={version[1:]}"
 	return version
 
 
@@ -76,7 +81,7 @@ def getDependencies() -> dict[str, typing.Union[str, dict[str, str]]]:
 	Returns:
 		dict[str, str]: [description]
 	"""
-	return dict(**POETRY["dependencies"])
+	return dict(**_getPyproject()["tool"]["poetry"]["dependencies"])
 
 
 def genRequirements() -> None:
@@ -114,10 +119,29 @@ def genRequirements() -> None:
 	print("Done!\n")
 
 
+def updatePyproject():
+	"""Update the pyproject.toml file with our shiny new version specifiers
+	"""
+	pyproject = _getPyproject()
+	dependencies = pyproject["tool"]["poetry"]["dependencies"]
+	for requirement in dependencies:
+		if requirement != "python":
+			if isinstance(dependencies[requirement], tomlkit.items.InlineTable):
+				dependent = dependencies[requirement]["version"]
+				dependencies[requirement]["version"] = procVer(dependent)
+			else:
+				dependencies[requirement] = procVer(dependencies[requirement])
+	_setPyproject(pyproject)
+
+
 def _build():
+	# Update pyproject.toml version specifiers
+	print(f"{CG}(Replacing poetry version specifiers){CLS}")
+	updatePyproject()
 	# Deal with manual changes to pyproject.toml
+	print(f"{CG}(Refreshing Poetry){CLS}\n")
 	_doSysExec("poetry update")
-	packageName = str(POETRY["name"])
+	packageName = str(_getPyproject()["tool"]["poetry"]["name"])
 	# Generate DOCS
 	print(f"{BLD}{UL}{CB}Building{CLS}\n\n{BLD}{UL}{CG}Documentation{CLS}")
 	try:

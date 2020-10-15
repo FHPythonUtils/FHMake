@@ -2,6 +2,11 @@
 All major and minor version changes will be documented in this file. Details of
 patch-level version changes can be found in [commit messages](../../commits/master).
 
+## 2020.4 - 2020/10/15
+- Replace Poetry version specifiers with our own when running `build`
+- PYPROJECT and POETRY constants have been removed (as we modify the file it
+  needs to be reloaded)
+
 ## 2020.3.2 - 2020/10/14
 - Fix unicode decode error with process.communicate
 
