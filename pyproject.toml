@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "fhmake"
-version = "2020.5.0"
+version = "2020.5.1"
 description = "Provides multiple methods to hide and retrieve data"
 authors = ["FredHappyface"]
 classifiers = [
@@ -33,7 +33,7 @@ fhmake = 'fhmake:cli'
 [tool.poetry.dependencies]
 python = "^3.8"
 tomlkit = "<2,>=0.7.0"
-simplesecurity = {extras = ["full"], version = "<2022,>=2020.1.1", optional = true}
+simplesecurity = {extras = ["full"], version = "<2022,>=2020.4.0", optional = true}
 checkrequirements = {extras = ["full"], version = "<2022,>=2020.0.6", optional = true}
 poetry = {version = "<3,>=1.1.2", optional = true}
 licensecheck = {extras = ["full"], version = "<2022,>=2020.0.3", optional = true}

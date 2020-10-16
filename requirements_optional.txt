@@ -2,5 +2,5 @@ checkrequirements[full]<2022,>=2020.0.6
 fhdoc<2022,>=2020.2.3
 licensecheck[full]<2022,>=2020.0.3
 poetry<3,>=1.1.2
-simplesecurity[full]<2022,>=2020.1.1
+simplesecurity[full]<2022,>=2020.4.0
 tomlkit<2,>=0.7.0

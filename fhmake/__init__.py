@@ -163,7 +163,7 @@ def _install():
 
 
 def _security():
-	print(_doSysExec("simplesecurity")[1])
+	print(_doSysExec("simplesecurity --fast")[1])
 
 
 def _publish():
