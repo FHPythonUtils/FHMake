@@ -51,7 +51,7 @@ FredHappyface Makefile for python. Run one of the following subcommands:
 
 
 ## Documentation
-See the [Docs](/DOCS/README.md) for more information.
+See the [Docs](/DOCS/) for more information.
 
 ## Install With PIP
 
