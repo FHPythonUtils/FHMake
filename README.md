@@ -1,12 +1,12 @@
-[![Github top language](https://img.shields.io/github/languages/top/FHPythonUtils/FHMake.svg?style=for-the-badge)](../../)
-[![Codacy grade](https://img.shields.io/codacy/grade/ff714fa09a7141ef9f0466073971d853.svg?style=for-the-badge)](https://www.codacy.com/gh/FHPythonUtils/FHMake)
+[![GitHub top language](https://img.shields.io/github/languages/top/FHPythonUtils/FHMake.svg?style=for-the-badge)](../../)
 [![Repository size](https://img.shields.io/github/repo-size/FHPythonUtils/FHMake.svg?style=for-the-badge)](../../)
 [![Issues](https://img.shields.io/github/issues/FHPythonUtils/FHMake.svg?style=for-the-badge)](../../issues)
 [![License](https://img.shields.io/github/license/FHPythonUtils/FHMake.svg?style=for-the-badge)](/LICENSE.md)
 [![Commit activity](https://img.shields.io/github/commit-activity/m/FHPythonUtils/FHMake.svg?style=for-the-badge)](../../commits/master)
 [![Last commit](https://img.shields.io/github/last-commit/FHPythonUtils/FHMake.svg?style=for-the-badge)](../../commits/master)
-[![PyPI Downloads](https://img.shields.io/pypi/dm/fhmake.svg?style=for-the-badge)](https://pypi.org/project/fhmake/)
-[![PyPI Version](https://img.shields.io/pypi/v/fhmake.svg?style=for-the-badge)](https://pypi.org/project/fhmake/)
+[![PyPI Downloads](https://img.shields.io/pypi/dm/fhmake.svg?style=for-the-badge)](https://pypistats.org/packages/fhmake)
+[![PyPI Total Downloads](https://img.shields.io/badge/dynamic/json?style=for-the-badge&label=total%20downloads&query=%24.total_downloads&url=https%3A%2F%2Fapi.pepy.tech%2Fapi%2Fprojects%2Ffhmake)](https://pepy.tech/project/fhmake)
+[![PyPI Version](https://img.shields.io/pypi/v/fhmake.svg?style=for-the-badge)](https://pypi.org/project/fhmake)
 
 <!-- omit in toc -->
 # FHMake
@@ -23,7 +23,7 @@ FredHappyface Makefile for python. Run one of the following subcommands:
 - licensechk: check the licences used by the requirements are compatible with this project
 <!-- omit in toc -->
 ## Table of Contents
-- [Changelog](#changelog)
+- [Documentation](#documentation)
 - [Install With PIP](#install-with-pip)
 - [Language information](#language-information)
 	- [Built for](#built-for)
@@ -35,16 +35,23 @@ FredHappyface Makefile for python. Run one of the following subcommands:
 - [How to run](#how-to-run)
 	- [With VSCode](#with-vscode)
 	- [From the Terminal](#from-the-terminal)
+- [Download Project](#download-project)
+	- [Clone](#clone)
+		- [Using The Command Line](#using-the-command-line)
+		- [Using GitHub Desktop](#using-github-desktop)
+	- [Download Zip File](#download-zip-file)
 - [Community Files](#community-files)
 	- [Licence](#licence)
-	- [Changelog](#changelog-1)
+	- [Changelog](#changelog)
 	- [Code of Conduct](#code-of-conduct)
 	- [Contributing](#contributing)
 	- [Security](#security)
 	- [Support](#support)
+	- [Rationale](#rationale)
 
-## Changelog
-See the [CHANGELOG](/CHANGELOG.md) for more information.
+
+## Documentation
+See the [Docs](/DOCS/README.md) for more information.
 
 ## Install With PIP
 
@@ -93,6 +100,35 @@ Interpreter > Python 3.9)
 ./[file].py
 ```
 
+## Download Project
+### Clone
+#### Using The Command Line
+1. Press the Clone or download button in the top right
+2. Copy the URL (link)
+3. Open the command line and change directory to where you wish to
+clone to
+4. Type 'git clone' followed by URL in step 2
+```bash
+$ git clone https://github.com/FHPythonUtils/FHMake
+```
+
+More information can be found at
+<https://help.github.com/en/articles/cloning-a-repository>
+
+#### Using GitHub Desktop
+1. Press the Clone or download button in the top right
+2. Click open in desktop
+3. Choose the path for where you want and click Clone
+
+More information can be found at
+<https://help.github.com/en/desktop/contributing-to-projects/cloning-a-repository-from-github-to-github-desktop>
+
+### Download Zip File
+
+1. Download this GitHub repository
+2. Extract the zip archive
+3. Copy/ move to the desired location
+
 ## Community Files
 ### Licence
 MIT License
@@ -103,19 +139,31 @@ Copyright (c) FredHappyface
 See the [Changelog](/CHANGELOG.md) for more information.
 
 ### Code of Conduct
-In the interest of fostering an open and welcoming environment, we
-as contributors and maintainers pledge to make participation in our
-project and our community a harassment-free experience for everyone.
-Please see the
-[Code of Conduct](https://github.com/FHPythonUtils/.github/blob/master/CODE_OF_CONDUCT.md) for more information.
+Online communities include people from many backgrounds. The *Project*
+contributors are committed to providing a friendly, safe and welcoming
+environment for all. Please see the
+[Code of Conduct](https://github.com/FHPythonUtils/.github/blob/master/CODE_OF_CONDUCT.md)
+ for more information.
 
 ### Contributing
-Contributions are welcome, please see the [Contributing Guidelines](https://github.com/FHPythonUtils/.github/blob/master/CONTRIBUTING.md) for more information.
+Contributions are welcome, please see the
+[Contributing Guidelines](https://github.com/FHPythonUtils/.github/blob/master/CONTRIBUTING.md)
+for more information.
 
 ### Security
-Thank you for improving the security of the project, please see the [Security Policy](https://github.com/FHPythonUtils/.github/blob/master/SECURITY.md) for more information.
+Thank you for improving the security of the project, please see the
+[Security Policy](https://github.com/FHPythonUtils/.github/blob/master/SECURITY.md)
+for more information.
 
 ### Support
 Thank you for using this project, I hope it is of use to you. Please be aware that
 those involved with the project often do so for fun along with other commitments
-(such as work, family, etc). Please see the [Support Policy](https://github.com/FHPythonUtils/.github/blob/master/SUPPORT.md) for more information.
+(such as work, family, etc). Please see the
+[Support Policy](https://github.com/FHPythonUtils/.github/blob/master/SUPPORT.md)
+for more information.
+
+### Rationale
+The rationale acts as a guide to various processes regarding projects such as
+the versioning scheme and the programming styles used. Please see the
+[Rationale](https://github.com/FHPythonUtils/.github/blob/master/RATIONALE.md)
+for more information.
