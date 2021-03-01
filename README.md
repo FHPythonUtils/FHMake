@@ -13,6 +13,7 @@
 
 <img src="readme-assets/icons/name.png" alt="Project Icon" width="750">
 
+```none
 FredHappyface Makefile for python. Run one of the following subcommands...
 
 install: Poetry install
@@ -20,6 +21,7 @@ build: Build documentation, requirements.txt, and run poetry build
 publish: Run poetry publish (interactive)
 audit: dependency checking, security analysis and complexity/ Maintainability
 checking. Use with --fast to speed up the security analysis.
+```
 
 <!-- omit in toc -->
 ## Table of Contents
