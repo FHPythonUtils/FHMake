@@ -1,0 +1,133 @@
+[01m[04m[36mChecking Requirements[00m
++    OK: tomlkit
+
+[01m[04m[36mChecking Requirement Licenses[00m
+┌──────────┬────────────────────┬────────────────────┐
+│Compatible│Package             │License             │
+├──────────┼────────────────────┼────────────────────┤
+│True      │appdirs             │MIT License         │
+│True      │cachecontrol        │Apache Software Lice│
+│True      │cachy               │MIT License         │
+│True      │certifi             │Mozilla Public Licen│
+│True      │cffi                │MIT License         │
+│True      │chardet             │GNU Library or Lesse│
+│True      │checkrequirements   │MIT License         │
+│True      │cleo                │MIT License         │
+│True      │clikit              │MIT License         │
+│True      │colorama            │BSD License         │
+│True      │crashtest           │MIT License         │
+│True      │cryptography        │Apache Software Lice│
+│True      │distlib             │Python Software Foun│
+│True      │fhdoc               │MIT License         │
+│True      │filelock            │Public Domain       │
+│True      │future              │MIT License         │
+│True      │html5lib            │MIT License         │
+│True      │idna                │BSD License         │
+│True      │jeepney             │MIT License         │
+│True      │keyring             │Python Software Foun│
+│True      │licensecheck        │MIT License         │
+│True      │lockfile            │MIT License         │
+│True      │mando               │MIT License         │
+│True      │msgpack             │Apache Software Lice│
+│True      │packaging           │Apache Software Lice│
+│True      │pastel              │MIT License         │
+│True      │pexpect             │ISC License (ISCL)  │
+│True      │pkginfo             │MIT License         │
+│True      │poetry              │MIT License         │
+│True      │poetry-core         │MIT License         │
+│True      │ptyprocess          │ISC License (ISCL)  │
+│True      │pycparser           │BSD License         │
+│True      │pylev               │BSD License         │
+│True      │pyparsing           │MIT License         │
+│True      │radon               │MIT License         │
+│True      │requests            │Apache Software Lice│
+│True      │requests-toolbelt   │Apache Software Lice│
+│True      │requirements-parser │BSD License         │
+│True      │secretstorage       │BSD License         │
+│True      │shellingham         │ISC License (ISCL)  │
+│True      │simplesecurity      │MIT License         │
+│True      │six                 │MIT License         │
+│True      │tomlkit             │MIT License         │
+│True      │urllib3             │MIT License         │
+│True      │virtualenv          │MIT License         │
+│True      │webencodings        │BSD License         │
+└──────────┴────────────────────┴────────────────────┘
+
+[01m[04m[36mFindings[00m
+
+Find a list of findings below ordered by severity
+
+┌──────────┬──────────────────────────────────────────────────┐
+│Severity  │Finding                                           │
+├──────────┼──────────────────────────────────────────────────┤
+│3         │B602: subprocess_popen_with_shell_equals_true     │
+│1         │B404: blacklist                                   │
+│1         │B607: start_process_with_partial_path             │
+│1         │B603: subprocess_without_shell_equals_true        │
+└──────────┴──────────────────────────────────────────────────┘
+
+[01m[04m[32mB602: subprocess_popen_with_shell_equals_true[00m
+subprocess call with shell=True identified, security issue.
+
+[04m[33mSeverity: 3 (confidence: 3)[00m
+
+[04m[33mEvidence[00m
+┌─────────────────────────────── ./fhmake/__init__.py ────────────────────────────────┐
+│ 55          RuntimeWarning: throw a warning should there be a non exit code         [00m│
+│ 56      """                                                                         [00m│
+│[100m[93m 57      with subprocess.Popen(command, shell=True, stdout=subprocess.PIPE,          [00m│
+│ 58      stderr=subprocess.STDOUT, encoding="utf-8", errors="ignore") as process:    [00m│
+│ 59          out = process.communicate()[0]                                          [00m│
+└─────────────────────────────────────────────────────────────────────────────────────┘
+
+[01m[04m[32mB404: blacklist[00m
+Consider possible security implications associated with subprocess module.
+
+[04m[33mSeverity: 1 (confidence: 3)[00m
+
+[04m[33mEvidence[00m
+┌─────────────────────────────── ./fhmake/__init__.py ────────────────────────────────┐
+│ 13  import math                                                                     [00m│
+│ 14  import platform                                                                 [00m│
+│[100m[93m 15  import subprocess                                                               [00m│
+│ 16  import typing                                                                   [00m│
+│ 17  from sys import exit as sysexit, stdout                                         [00m│
+└─────────────────────────────────────────────────────────────────────────────────────┘
+
+[01m[04m[32mB607: start_process_with_partial_path[00m
+Starting a process with a partial executable path
+
+[04m[33mSeverity: 1 (confidence: 3)[00m
+
+[04m[33mEvidence[00m
+┌─────────────────────────────── ./fhmake/__init__.py ────────────────────────────────┐
+│153  def _publish(unknown: list[str]):                                               [00m│
+│154      print(f"{BLD}{UL}{CB}Publish{CLS}")                                         [00m│
+│[100m[93m155      with subprocess.Popen("poetry publish") as process:                         [00m│
+│156          _ = process.wait()                                                      [00m│
+│157                                                                                  [00m│
+└─────────────────────────────────────────────────────────────────────────────────────┘
+
+[01m[04m[32mB603: subprocess_without_shell_equals_true[00m
+subprocess call - check for execution of untrusted input.
+
+[04m[33mSeverity: 1 (confidence: 3)[00m
+
+[04m[33mEvidence[00m
+┌─────────────────────────────── ./fhmake/__init__.py ────────────────────────────────┐
+│153  def _publish(unknown: list[str]):                                               [00m│
+│154      print(f"{BLD}{UL}{CB}Publish{CLS}")                                         [00m│
+│[100m[93m155      with subprocess.Popen("poetry publish") as process:                         [00m│
+│156          _ = process.wait()                                                      [00m│
+│157                                                                                  [00m│
+└─────────────────────────────────────────────────────────────────────────────────────┘
+[00m
+
+[01m[04m[36mChecking Complexity[00m
+fhmake/__init__.py - A 2.9166666666666665
+
+[01m[04m[36mChecking Maintainability[00m
+fhmake/__init__.py - A 56.09317337995339
+fhmake/__main__.py - A 100.0
+
+[01m[33mOne of the above checks has reported a warning, double check the output of these.[00m

@@ -25,6 +25,7 @@ checking. Use with --fast to speed up the security analysis.
 
 <!-- omit in toc -->
 ## Table of Contents
+- [Example Output](#example-output)
 - [Documentation](#documentation)
 - [Install With PIP](#install-with-pip)
 - [Language information](#language-information)
@@ -50,6 +51,31 @@ checking. Use with --fast to speed up the security analysis.
 	- [Security](#security)
 	- [Support](#support)
 	- [Rationale](#rationale)
+
+## Example Output
+
+```none
+fhmake install
+```
+![fhmake install](/readme-assets/terminal/install.svg)
+
+
+```none
+fhmake build
+```
+![fhmake build](/readme-assets/terminal/build.svg)
+
+
+```none
+fhmake publish
+```
+![fhmake publish](/readme-assets/terminal/publish.svg)
+
+
+```none
+fhmake audit
+```
+![fhmake audit](/readme-assets/terminal/audit.svg)
 
 
 ## Documentation
