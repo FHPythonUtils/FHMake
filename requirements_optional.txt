@@ -1,6 +1,7 @@
-checkrequirements[full]<2022,>=2020.0.6
-fhdoc<2022,>=2020.2.3
-licensecheck[full]<2022,>=2020.0.3
+checkrequirements<2023,>=2021
+fhdoc<2023,>=2021
+licensecheck<2023,>=2021.1
 poetry<3,>=1.1.2
-simplesecurity[full]<2022,>=2020.4.0
+radon<6,>=4.3.2
+simplesecurity<2023,>=2021.2
 tomlkit<2,>=0.7.0

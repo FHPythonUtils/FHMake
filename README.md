@@ -13,14 +13,14 @@
 
 <img src="readme-assets/icons/name.png" alt="Project Icon" width="750">
 
-FredHappyface Makefile for python. Run one of the following subcommands:
+FredHappyface Makefile for python. Run one of the following subcommands...
 
-- install: Poetry install
-- build: Build documentation, requirements.txt, and run poetry build
-- security: Run some basic security checks
-- publish: Run poetry publish (interactive)
-- checkreqs: check the requirements file will work with most recent pkg versions
-- licensechk: check the licences used by the requirements are compatible with this project
+install: Poetry install
+build: Build documentation, requirements.txt, and run poetry build
+publish: Run poetry publish (interactive)
+audit: dependency checking, security analysis and complexity/ Maintainability
+checking. Use with --fast to speed up the security analysis.
+
 <!-- omit in toc -->
 ## Table of Contents
 - [Documentation](#documentation)
