@@ -108,6 +108,11 @@ def genRequirements() -> None:
 		else:
 			dependent = typing.cast(str, dependencies[requirement])
 			requirements.append(f"{requirement}{procVer(dependent)}")
+	with open("requirements.txt", "w") as requirementsTxt:
+		requirementsTxt.write("\n".join(sorted(requirements)) + "\n")
+	with open("requirements_optional.txt", "w") as requirementsTxt:
+		requirementsTxt.write("\n".join(sorted(requirements + requirementsOpt))
+		+ "\n")
 	print("Done!\n")
 
 

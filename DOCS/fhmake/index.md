@@ -25,7 +25,7 @@ checking. Use with --fast to speed up the security analysis.
 
 ## cli
 
-[[find in source code]](../../fhmake/__init__.py#L208)
+[[find in source code]](../../fhmake/__init__.py#L213)
 
 ```python
 def cli():
@@ -77,7 +77,7 @@ Process a version string. This is pretty opinionated.
 
 ## updatePyproject
 
-[[find in source code]](../../fhmake/__init__.py#L114)
+[[find in source code]](../../fhmake/__init__.py#L119)
 
 ```python
 def updatePyproject():

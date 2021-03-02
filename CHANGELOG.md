@@ -3,6 +3,9 @@ All major and minor version changes will be documented in this file. Details of
 patch-level version changes can be found in [commit messages](../../commits/master).
 
 ## 2021 - 2021/03/01
+- Bugfix requirements.txt generation.
+
+## 2021 - 2021/03/01
 - Wrap dependency checking, security analysis and complexity/ Maintainability
   checking in 'audit'
 - Tidy up
