@@ -2,6 +2,7 @@ checkrequirements<2023,>=2021
 fhdoc<2023,>=2021
 licensecheck<2023,>=2021.1
 poetry<3,>=1.1.2
+pylint<3,>=2.7.2
 radon<6,>=4.3.2
 simplesecurity<2023,>=2021.2
 tomlkit<2,>=0.7.0

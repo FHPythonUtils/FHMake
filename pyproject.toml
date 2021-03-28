@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "fhmake"
-version = "2021.0.1"
-description = "Provides multiple methods to hide and retrieve data"
+version = "2021.1"
+description = "FredHappyface Makefile for python. build, install, publish or audit"
 authors = ["FredHappyface"]
 classifiers = [
 	"Environment :: Console",
@@ -39,9 +39,10 @@ poetry = {version = "<3,>=1.1.2", optional = true}
 licensecheck = {version = "<2023,>=2021.1", optional = true}
 fhdoc = {version = "<2023,>=2021", optional = true}
 radon = {version = "<6,>=4.3.2", optional = true}
+pylint = {version = "<3,>=2.7.2", optional = true}
 
 [tool.poetry.extras]
-full = ["simplesecurity", "checkrequirements", "poetry", "licensecheck", "fhdoc", "radon"]
+full = ["simplesecurity", "checkrequirements", "poetry", "licensecheck", "fhdoc", "radon", "pylint"]
 
 [build-system]
 requires = ["poetry-core"]
