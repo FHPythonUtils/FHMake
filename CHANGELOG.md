@@ -2,6 +2,9 @@
 All major and minor version changes will be documented in this file. Details of
 patch-level version changes can be found in [commit messages](../../commits/master).
 
+## 2021.1.1 - 2021/04/16
+- If installing fhmake\[full\] we need flake8-polyfill to prevent flake8 from breaking
+
 ## 2021.1 - 2021/03/28
 - Significant refactoring
 - Add score + duplicate to audit (similar to functions provided by codacy)

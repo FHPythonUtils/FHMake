@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "fhmake"
-version = "2021.1"
+version = "2021.1.1"
 description = "FredHappyface Makefile for python. build, install, publish or audit"
 authors = ["FredHappyface"]
 classifiers = [
@@ -40,9 +40,20 @@ licensecheck = {version = "<2023,>=2021.1", optional = true}
 fhdoc = {version = "<2023,>=2021", optional = true}
 radon = {version = "<6,>=4.3.2", optional = true}
 pylint = {version = "<3,>=2.7.2", optional = true}
+# If installing fhmake[full] we need flake8-polyfill to prevent flake8 from breaking
+flake8-polyfill = {version = "<2,>=1.0.2", optional = true}
 
 [tool.poetry.extras]
-full = ["simplesecurity", "checkrequirements", "poetry", "licensecheck", "fhdoc", "radon", "pylint"]
+full = [
+	"simplesecurity",
+	"checkrequirements",
+	"poetry",
+	"licensecheck",
+	"fhdoc",
+	"radon",
+	"pylint",
+	"flake8-polyfill",
+]
 
 [build-system]
 requires = ["poetry-core"]
