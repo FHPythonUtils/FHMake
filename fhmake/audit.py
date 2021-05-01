@@ -45,7 +45,7 @@ def subtaskScore(totalLines: int) -> None:
 	# Define pylint args
 	pylintArgs = [
 		"--enable=all",
-		"--disable=pointless-string-statement,superfluous-parens,bad-continuation,wrong-import-position,unsubscriptable-object",
+		"--disable=pointless-string-statement,superfluous-parens,bad-continuation,wrong-import-position,unsubscriptable-object, duplicate-code",
 		'--indent-string="\\t"',
 		"--ignore-patterns=test_.*?py",
 		"--argument-naming-style=camelCase",

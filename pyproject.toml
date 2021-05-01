@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "fhmake"
-version = "2021.1.1"
+version = "2021.1.2"
 description = "FredHappyface Makefile for python. build, install, publish or audit"
 authors = ["FredHappyface"]
 classifiers = [
