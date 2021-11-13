@@ -1,6 +1,7 @@
 [tool.poetry]
 name = "fhmake"
-version = "2021.1.2"
+version = "2021.1.3"
+license = "mit"
 description = "FredHappyface Makefile for python. build, install, publish or audit"
 authors = ["FredHappyface"]
 classifiers = [
@@ -10,13 +11,8 @@ classifiers = [
 	"Development Status :: 5 - Production/Stable",
 	"Intended Audience :: Developers",
 	"Intended Audience :: Education",
-	"License :: OSI Approved :: MIT License",
 	"Natural Language :: English",
 	"Operating System :: OS Independent",
-	"Programming Language :: Python :: 3",
-	"Programming Language :: Python :: 3.7",
-	"Programming Language :: Python :: 3.8",
-	"Programming Language :: Python :: 3.9",
 	"Programming Language :: Python :: Implementation :: CPython",
 	"Topic :: Security",
 	"Topic :: Software Development :: Libraries :: Python Modules",
@@ -33,13 +29,13 @@ fhmake = 'fhmake:cli'
 [tool.poetry.dependencies]
 python = "^3.8"
 tomlkit = "<2,>=0.7.0"
-simplesecurity = {version = "<2023,>=2021.2", optional = true}
-checkrequirements = {version = "<2023,>=2021", optional = true}
-poetry = {version = "<3,>=1.1.2", optional = true}
-licensecheck = {version = "<2023,>=2021.1", optional = true}
-fhdoc = {version = "<2023,>=2021", optional = true}
-radon = {version = "<6,>=4.3.2", optional = true}
-pylint = {version = "<3,>=2.7.2", optional = true}
+simplesecurity = {version = "<2023,>=2021.3.3", optional = true}
+checkrequirements = {version = "<2023,>=2021.0.1", optional = true}
+poetry = {version = "<2,>=1.1.11", optional = true}
+licensecheck = {version = "<2023,>=2021.5.1", optional = true}
+fhdoc = {version = "<2023,>=2021.0.2", optional = true}
+radon = {version = "<6,>=5.1.0", optional = true}
+pylint = {version = "<3,>=2.11.1", optional = true}
 # If installing fhmake[full] we need flake8-polyfill to prevent flake8 from breaking
 flake8-polyfill = {version = "<2,>=1.0.2", optional = true}
 
@@ -54,6 +50,39 @@ full = [
 	"pylint",
 	"flake8-polyfill",
 ]
+
+[tool.pylint.basic]
+argument-naming-style = "camelCase"
+attr-naming-style = "camelCase"
+function-naming-style = "camelCase"
+method-naming-style = "camelCase"
+variable-naming-style = "camelCase"
+
+[tool.pylint.format]
+indent-string = "\t"
+
+[tool.pylint.master]
+ignore-patterns = "test_.*?py"
+
+[tool.pylint.messages_control]
+enable = ["F", "E", "W", "R", "C"]
+disable = [
+	"pointless-string-statement",
+	"superfluous-parens",
+	"bad-continuation"
+]
+
+[tool.black]
+line-length = 100
+target-version = ["py37"]
+
+[tool.isort]
+profile = "black"
+indent = "Tab"
+
+[tool.pydocstyle]
+convention = "google"
+ignore = "D205,D415"
 
 [build-system]
 requires = ["poetry-core"]

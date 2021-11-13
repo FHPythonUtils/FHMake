@@ -26,7 +26,7 @@ checking. Use with --fast to speed up the security analysis.
 
 ## cli
 
-[[find in source code]](../../fhmake/__init__.py#L29)
+[[find in source code]](../../fhmake/__init__.py#L28)
 
 ```python
 def cli():

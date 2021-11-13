@@ -91,9 +91,7 @@ def subtaskComplexity() -> None:
 	ccAve = 0
 	for file in radonCCRaw:
 		fileStr = file.replace("\\", "/")
-		complexity = sum([ccRaw["complexity"] for ccRaw in radonCCRaw[file]]) / len(
-			radonCCRaw[file]
-		)
+		complexity = sum(ccRaw["complexity"] for ccRaw in radonCCRaw[file]) / len(radonCCRaw[file])
 		ccAve += complexity
 		print(f"{fileStr:<30} - {getCCGrade(complexity)} {complexity.__round__(1):>5}")
 	ccAve /= len(radonCCRaw)
@@ -128,7 +126,7 @@ def subtaskDup(totalLines: int) -> None:
 			+ f" {NAME.lower()}"
 		)[1]
 	)
-	score = sum([message["message"].count("\n") for message in pylint]) / totalLines * 100
+	score = sum(message["message"].count("\n") for message in pylint) / totalLines * 100
 	rank = chr(65 + (score > 9) + (score > 19))
 	print(f"{ANSI['B']}{'Duplicates':<26} (%) - {rank} {score.__round__(1):>5}{ANSI['CLR']}")
 

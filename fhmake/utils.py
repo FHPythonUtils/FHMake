@@ -26,14 +26,12 @@ ANSI = {
 
 def _getPyproject() -> typing.Any:
 	"""Get the pyproject data."""
-	with open("pyproject.toml", encoding="utf=8") as pyproject:
-		return tomlkit.parse(pyproject.read())
+	return tomlkit.parse(Path("pyproject.toml").read_text(encoding="utf-8"))
 
 
 def _setPyproject(toml: toml_document.TOMLDocument):
 	"""Write the pyproject data back to file."""
-	with open("pyproject.toml", "w", encoding="utf=8") as pyproject:
-		pyproject.write(tomlkit.dumps(toml))
+	Path("pyproject.toml").write_text(tomlkit.dumps(toml), encoding="utf-8")
 
 
 def _doSysExec(command: str) -> tuple[int, str]:

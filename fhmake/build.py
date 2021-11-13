@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-import typing
+from pathlib import Path
+from typing import Any, cast
 
 import tomlkit
 import tomlkit.items
@@ -27,7 +28,7 @@ def getProcVer(version: str) -> str:
 	return version
 
 
-def getDependencies() -> dict[str, typing.Any]:
+def getDependencies() -> dict[str, Any]:
 	"""Get our dependencies as a dictionary.
 
 	Returns:
@@ -58,12 +59,12 @@ def subtaskGenRequirements() -> None:
 					f"{getProcVer(dependent['version'])}"
 				)
 		else:
-			dependent = typing.cast(str, dependencies[requirement])
+			dependent = cast(str, dependencies[requirement])
 			requirements.append(f"{requirement}{getProcVer(dependent)}")
-	with open("requirements.txt", "w") as requirementsTxt:
-		requirementsTxt.write("\n".join(sorted(requirements)) + "\n")
-	with open("requirements_optional.txt", "w") as requirementsTxt:
-		requirementsTxt.write("\n".join(sorted(requirements + requirementsOpt)) + "\n")
+	Path("requirements.txt").write_text("\n".join(sorted(requirements)) + "\n", encoding="utf-8")
+	Path("requirements_optional.txt").write_text(
+		"\n".join(sorted(requirements + requirementsOpt)) + "\n", encoding="utf-8"
+	)
 	print("Done!\n")
 
 

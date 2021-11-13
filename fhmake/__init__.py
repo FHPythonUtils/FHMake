@@ -10,11 +10,10 @@ from __future__ import annotations
 
 import argparse
 
+from .audit import taskAudit
 from .build import taskBuild
 from .install import taskInstall
 from .publish import taskPublish
-from .audit import taskAudit
-
 
 # Add new subcommands here:
 COMMAND_MAP = {
@@ -23,7 +22,7 @@ COMMAND_MAP = {
 	"publish": taskPublish,
 	"audit": taskAudit,
 }
-HELP = "subcommand must be one of {}".format(list(COMMAND_MAP.keys()))
+HELP = f"subcommand must be one of {list(COMMAND_MAP.keys())}"
 
 
 def cli():

@@ -13,10 +13,10 @@ build: Build documentation, requirements.txt, and run poetry build.
 
 ## getDependencies
 
-[[find in source code]](../../fhmake/build.py#L30)
+[[find in source code]](../../fhmake/build.py#L31)
 
 ```python
-def getDependencies() -> dict[(str, typing.Any)]:
+def getDependencies() -> dict[(str, Any)]:
 ```
 
 Get our dependencies as a dictionary.
@@ -27,7 +27,7 @@ Get our dependencies as a dictionary.
 
 ## getProcVer
 
-[[find in source code]](../../fhmake/build.py#L13)
+[[find in source code]](../../fhmake/build.py#L14)
 
 ```python
 def getProcVer(version: str) -> str:
@@ -45,7 +45,7 @@ Process a version string. This is pretty opinionated.
 
 ## subtaskGenRequirements
 
-[[find in source code]](../../fhmake/build.py#L39)
+[[find in source code]](../../fhmake/build.py#L40)
 
 ```python
 def subtaskGenRequirements() -> None:
@@ -55,7 +55,7 @@ Generate the requirements files.
 
 ## subtaskUpdatePyproject
 
-[[find in source code]](../../fhmake/build.py#L70)
+[[find in source code]](../../fhmake/build.py#L71)
 
 ```python
 def subtaskUpdatePyproject():
@@ -65,7 +65,7 @@ Update the pyproject.toml file with our shiny new version specifiers.
 
 ## taskBuild
 
-[[find in source code]](../../fhmake/build.py#L84)
+[[find in source code]](../../fhmake/build.py#L85)
 
 ```python
 def taskBuild(kwargs: list[str]) -> None:

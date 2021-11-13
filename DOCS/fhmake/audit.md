@@ -59,7 +59,7 @@ Report on the complexity of project files.
 
 ## subtaskDup
 
-[[find in source code]](../../fhmake/audit.py#L117)
+[[find in source code]](../../fhmake/audit.py#L115)
 
 ```python
 def subtaskDup(totalLines: int) -> None:
@@ -75,7 +75,7 @@ of lines and pylint output.
 
 ## subtaskMaintainability
 
-[[find in source code]](../../fhmake/audit.py#L103)
+[[find in source code]](../../fhmake/audit.py#L101)
 
 ```python
 def subtaskMaintainability() -> None:
@@ -101,7 +101,7 @@ number of lines and pylint output.
 
 ## taskAudit
 
-[[find in source code]](../../fhmake/audit.py#L136)
+[[find in source code]](../../fhmake/audit.py#L134)
 
 ```python
 def taskAudit(kwargs: list[str]) -> None:
