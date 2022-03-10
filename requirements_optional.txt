@@ -1,9 +1,9 @@
-checkrequirements<2023,>=2021.0.1
-fhdoc<2023,>=2021.0.2
+checkrequirements<2024,>=2022
 flake8-polyfill<2,>=1.0.2
-licensecheck<2023,>=2021.5.1
-poetry<2,>=1.1.11
-pylint<3,>=2.11.1
+handsdown<2,>=1.0.0
+licensecheck<2024,>=2022.0.2
+poetry<2,>=1.1.13
+pylint<3,>=2.12.2
 radon<6,>=5.1.0
-simplesecurity<2023,>=2021.3.3
+simplesecurity<2023,>=2021.3.4
 tomlkit<2,>=0.7.0

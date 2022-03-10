@@ -1,4 +1,4 @@
-"""FredHappyface Makefile for python. Run one of the following subcommands...
+"""FredHappyface Makefile for python. Run one of the following subcommands
 
 install: Poetry install
 build: Build documentation, requirements.txt, and run poetry build
@@ -15,7 +15,7 @@ from .build import taskBuild
 from .install import taskInstall
 from .publish import taskPublish
 
-# Add new subcommands here:
+# Add new subcommands here
 COMMAND_MAP = {
 	"build": taskBuild,
 	"install": taskInstall,

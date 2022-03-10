@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+from shutil import copy, rmtree
 from typing import Any, cast
 
 import tomlkit
@@ -100,7 +101,18 @@ def taskBuild(kwargs: list[str]) -> None:
 		f"{ANSI['B']}{ANSI['U']}{ANSI['CB']}Building{ANSI['CLR']}\n\n{ANSI['B']}"
 		f"{ANSI['U']}{ANSI['CG']}Documentation{ANSI['CLR']}"
 	)
-	print(_doSysExec("fhdoc --cleanup")[1].replace("\\", "/"))
+	rmtree("DOCS", ignore_errors=True)
+	docs = "documentation/reference"
+	print(
+		_doSysExec(
+			f"handsdown --cleanup --source-code-path {len(docs.split('/'))*'../'}.. -o {docs}"
+		)[1].replace("\\", "/")
+	)
+	_ = [
+		copy(x, x.as_posix().replace("MODULES.md", "README.md"))
+		for x in Path(docs).glob("**/MODULES.md")
+	]
+
 	# Generate requirements.txt
 	print(f"{ANSI['B']}{ANSI['U']}{ANSI['CG']}Requirements.txt{ANSI['CLR']}")
 	subtaskGenRequirements()

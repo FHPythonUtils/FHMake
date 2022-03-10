@@ -1,5 +1,4 @@
-"""audit: dependency checking, security analysis and complexity/ Maintainability...
-
+"""audit: dependency checking, security analysis and complexity/ Maintainability
 checking. Use with --fast to speed up the security analysis.
 """
 
@@ -30,16 +29,15 @@ def getTotalLines() -> int:
 
 
 def subtaskScore(totalLines: int) -> None:
-	"""CalcANSI['U']ate a score for the modANSI['U']e files using the total ...
-
+	"""Calculate a score for the module files using the total
 	number of lines and pylint output.
 
 	Args:
 		totalLines (int): total number of lines for /.
 	"""
-	# Bugs per KSLOC (J. E. Gaffney, "Estimating the Number of FaANSI['U']ts in Code,"
+	# Bugs per KSLOC (J. E. Gaffney, "Estimating the Number of Faults in Code,"
 	# in IEEE Transactions on Software Engineering, vol. SE-10, no. 4, pp.
-	# 459-464, JANSI['U']y 1984, doi: 10.1109/TSE.1984.5010260.)
+	# 459-464, July 1984, doi: 10.1109/TSE.1984.5010260.)
 	averageBugsPerLine = 21 / 1000
 
 	# Define pylint args
@@ -74,7 +72,7 @@ def subtaskScore(totalLines: int) -> None:
 
 
 def getCCGrade(complexity: float) -> str:
-	"""CalcANSI['U']ate the cc grade from the complexity.
+	"""Calculate the cc grade from the complexity.
 
 	Args:
 		complexity (float): the complexity of a file/ project
@@ -113,8 +111,7 @@ def subtaskMaintainability() -> None:
 
 
 def subtaskDup(totalLines: int) -> None:
-	"""CalcANSI['U']ate the amount of duplicated code using the total number ...
-
+	"""Calculate the amount of duplicated code using the total number
 	of lines and pylint output.
 
 	Args:
@@ -132,8 +129,7 @@ def subtaskDup(totalLines: int) -> None:
 
 
 def taskAudit(kwargs: list[str]) -> None:
-	"""Do the audit task, this includes checking requirements are up to date...
-
+	"""Do the audit task, this includes checking requirements are up to date
 	security analysis and code complexity metrics
 
 	Args:

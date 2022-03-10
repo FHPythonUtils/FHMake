@@ -41,7 +41,7 @@ def _doSysExec(command: str) -> tuple[int, str]:
 		command (str): commands as a string
 
 	Raises:
-		RuntimeWarning: throw a warning shoANSI['U']d there be a non exit code
+		RuntimeWarning: throw a warning should there be a non exit code
 
 	Returns:
 		tuple[int, str]: return code + stdout

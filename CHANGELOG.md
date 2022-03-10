@@ -3,6 +3,11 @@
 All major and minor version changes will be documented in this file. Details of
 patch-level version changes can be found in [commit messages](../../commits/master).
 
+## 2022 - 2022/03/10
+
+- Use `handsdown` (with minor tweaks) in place of `fhdoc`
+- Update documentation
+
 ## 2021.1.3 - 2021/11/13
 
 - add pre-commit
@@ -15,7 +20,7 @@ patch-level version changes can be found in [commit messages](../../commits/mast
 
 ## 2021.1.1 - 2021/04/16
 
-- If installing fhmake\[full\] we need flake8-polyfill to prevent flake8 from breaking
+- If installing `fhmake[full]` we need `flake8-polyfill` to prevent `flake8` from breaking
 
 ## 2021.1 - 2021/03/28
 
@@ -39,7 +44,7 @@ patch-level version changes can be found in [commit messages](../../commits/mast
 
 ## 2020.5 - 2020/10/15
 
-- Replace pdoc3 with fhdoc
+- Replace `pdoc3` with `fhdoc`
 
 ## 2020.4 - 2020/10/15
 
@@ -66,7 +71,7 @@ patch-level version changes can be found in [commit messages](../../commits/mast
 
 ## 2020.2.4 - 2020/10/09
 
-- bugfix on remove /docs/ if doesn't exist...
+- bugfix on removing /docs/ if doesn't exist
 
 ## 2020.2.3 - 2020/10/09
 
@@ -75,8 +80,8 @@ patch-level version changes can be found in [commit messages](../../commits/mast
 
 ## 2020.2.2 - 2020/10/09
 
-- remove dephell dependency
-- don't generate setup.py any more
+- remove `dephell` dependency
+- don't generate `setup.py` any more
 
 ## 2020.2.1 - 2020/10/08
 
@@ -91,11 +96,11 @@ patch-level version changes can be found in [commit messages](../../commits/mast
 
 ## 2020.1.1 - 2020/07/12
 
-- tomlkit = ">=0.5.11,<0.7"
+- `tomlkit = ">=0.5.11,<0.7"`
 
 ## 2020.1 - 2020/06/07
 
-- Replace pydoc-markdown with pdoc3
+- Replace `pydoc-markdown` with `pdoc3`
 
 ## 2020.0.1 - 2020/06/03
 
