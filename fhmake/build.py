@@ -103,11 +103,7 @@ def taskBuild(kwargs: list[str]) -> None:
 	)
 	rmtree("DOCS", ignore_errors=True)
 	docs = "documentation/reference"
-	print(
-		_doSysExec(
-			f"handsdown --cleanup --source-code-path {len(docs.split('/'))*'../'}.. -o {docs}"
-		)[1].replace("\\", "/")
-	)
+	print(_doSysExec(f"handsdown  --cleanup -o {docs}")[1].replace("\\", "/"))
 	_ = [
 		copy(x, x.as_posix().replace("MODULES.md", "README.md"))
 		for x in Path(docs).glob("**/MODULES.md")

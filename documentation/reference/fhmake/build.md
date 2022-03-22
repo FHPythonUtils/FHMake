@@ -16,7 +16,7 @@ build: Build documentation, requirements.txt, and run poetry build.
 [[find in source code]](../../../fhmake/build.py#L32)
 
 ```python
-def getDependencies() -> dict[(str, Any)]:
+def getDependencies() -> dict[str, Any]:
 ```
 
 Get our dependencies as a dictionary.

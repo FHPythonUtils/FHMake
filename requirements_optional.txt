@@ -1,6 +1,6 @@
 checkrequirements<2024,>=2022
 flake8-polyfill<2,>=1.0.2
-handsdown<2,>=1.0.0
+handsdown<2,>=1.1.0
 licensecheck<2024,>=2022.0.2
 poetry<2,>=1.1.13
 pylint<3,>=2.12.2
