@@ -1,22 +1,29 @@
 # Install
 
+[Fhmake Index](../README.md#fhmake-index) /
+[Fhmake](./index.md#fhmake) /
+Install
+
 > Auto-generated documentation for [fhmake.install](../../../fhmake/install.py) module.
 
-install: Poetry install.
-
-- [Fhmake](../README.md#fhmake-index) / [Modules](../MODULES.md#fhmake-modules) / [Fhmake](index.md#fhmake) / Install
-    - [taskInstall](#taskinstall)
+- [Install](#install)
+  - [taskInstall](#taskinstall)
 
 ## taskInstall
 
-[[find in source code]](../../../fhmake/install.py#L8)
-
-```python
-def taskInstall(kwargs: list[str]) -> None:
-```
+[Show source in install.py:8](../../../fhmake/install.py#L8)
 
 Run the install task.
 
 #### Arguments
 
 - `kwargs` *list[str]* - additional args
+
+#### Signature
+
+```python
+def taskInstall(kwargs: list[str]) -> None:
+    ...
+```
+
+

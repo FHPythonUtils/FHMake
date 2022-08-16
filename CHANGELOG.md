@@ -3,6 +3,10 @@
 All major and minor version changes will be documented in this file. Details of
 patch-level version changes can be found in [commit messages](../../commits/master).
 
+## 2022.2 - 2022/08/16
+
+- Update deps
+
 ## 2022.1 - 2022/03/10
 
 - Update handsdown to fix https://github.com/vemel/handsdown/issues/19

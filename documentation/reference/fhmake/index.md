@@ -1,35 +1,39 @@
 # Fhmake
 
+[Fhmake Index](../README.md#fhmake-index) /
+Fhmake
+
 > Auto-generated documentation for [fhmake](../../../fhmake/__init__.py) module.
-
-FredHappyface Makefile for python. Run one of the following subcommands
-
-- [Fhmake](../README.md#fhmake-index) / [Modules](../MODULES.md#fhmake-modules) / Fhmake
-    - [cli](#cli)
-    - Modules
-        - [Module](module.md#module)
-        - [Audit](audit.md#audit)
-        - [Build](build.md#build)
-        - [Install](install.md#install)
-        - [Publish](publish.md#publish)
-        - [Utils](utils.md#utils)
-
-install: Poetry install
-build: Build documentation, requirements.txt, and run poetry build
-publish: Run poetry publish (interactive)
-audit: dependency checking, security analysis and complexity/ Maintainability
-checking. Use with --fast to speed up the security analysis.
 
 #### Attributes
 
-- `COMMAND_MAP` - Add new subcommands here: `{'build': taskBuild, 'install': taskInstall, 'p...`
+- `COMMAND_MAP` - Add new subcommands here: `{'build': taskBuild, 'install': taskInstall, 'publish': taskPublish, 'audit': taskAudit}`
+
+
+- [Fhmake](#fhmake)
+  - [cli](#cli)
+  - [Modules](#modules)
 
 ## cli
 
-[[find in source code]](../../../fhmake/__init__.py#L28)
+[Show source in __init__.py:28](../../../fhmake/__init__.py#L28)
+
+CLI entry point.
+
+#### Signature
 
 ```python
 def cli():
+    ...
 ```
 
-CLI entry point.
+
+
+## Modules
+
+- [Module](./module.md)
+- [Audit](./audit.md)
+- [Build](./build.md)
+- [Install](./install.md)
+- [Publish](./publish.md)
+- [Utils](./utils.md)

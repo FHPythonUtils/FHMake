@@ -1,26 +1,23 @@
 # Audit
 
+[Fhmake Index](../README.md#fhmake-index) /
+[Fhmake](./index.md#fhmake) /
+Audit
+
 > Auto-generated documentation for [fhmake.audit](../../../fhmake/audit.py) module.
 
-audit: dependency checking, security analysis and complexity/ Maintainability
-checking. Use with --fast to speed up the security analysis.
-
-- [Fhmake](../README.md#fhmake-index) / [Modules](../MODULES.md#fhmake-modules) / [Fhmake](index.md#fhmake) / Audit
-    - [getCCGrade](#getccgrade)
-    - [getTotalLines](#gettotallines)
-    - [subtaskComplexity](#subtaskcomplexity)
-    - [subtaskDup](#subtaskdup)
-    - [subtaskMaintainability](#subtaskmaintainability)
-    - [subtaskScore](#subtaskscore)
-    - [taskAudit](#taskaudit)
+- [Audit](#audit)
+  - [getCCGrade](#getccgrade)
+  - [getTotalLines](#gettotallines)
+  - [subtaskComplexity](#subtaskcomplexity)
+  - [subtaskDup](#subtaskdup)
+  - [subtaskMaintainability](#subtaskmaintainability)
+  - [subtaskScore](#subtaskscore)
+  - [taskAudit](#taskaudit)
 
 ## getCCGrade
 
-[[find in source code]](../../../fhmake/audit.py#L74)
-
-```python
-def getCCGrade(complexity: float) -> str:
-```
+[Show source in audit.py:74](../../../fhmake/audit.py#L74)
 
 Calculate the cc grade from the complexity.
 
@@ -32,13 +29,18 @@ Calculate the cc grade from the complexity.
 
 - `str` - the grade
 
-## getTotalLines
-
-[[find in source code]](../../../fhmake/audit.py#L16)
+#### Signature
 
 ```python
-def getTotalLines() -> int:
+def getCCGrade(complexity: float) -> str:
+    ...
 ```
+
+
+
+## getTotalLines
+
+[Show source in audit.py:16](../../../fhmake/audit.py#L16)
 
 Get the total number of lines python files under the project directory.
 
@@ -46,23 +48,33 @@ Get the total number of lines python files under the project directory.
 
 - `int` - total number of lines
 
-## subtaskComplexity
-
-[[find in source code]](../../../fhmake/audit.py#L86)
+#### Signature
 
 ```python
-def subtaskComplexity() -> None:
+def getTotalLines() -> int:
+    ...
 ```
+
+
+
+## subtaskComplexity
+
+[Show source in audit.py:86](../../../fhmake/audit.py#L86)
 
 Report on the complexity of project files.
 
-## subtaskDup
-
-[[find in source code]](../../../fhmake/audit.py#L113)
+#### Signature
 
 ```python
-def subtaskDup(totalLines: int) -> None:
+def subtaskComplexity() -> None:
+    ...
 ```
+
+
+
+## subtaskDup
+
+[Show source in audit.py:113](../../../fhmake/audit.py#L113)
 
 Calculate the amount of duplicated code using the total number
 of lines and pylint output.
@@ -71,23 +83,33 @@ of lines and pylint output.
 
 - `totalLines` *int* - total number of lines
 
-## subtaskMaintainability
-
-[[find in source code]](../../../fhmake/audit.py#L99)
+#### Signature
 
 ```python
-def subtaskMaintainability() -> None:
+def subtaskDup(totalLines: int) -> None:
+    ...
 ```
+
+
+
+## subtaskMaintainability
+
+[Show source in audit.py:99](../../../fhmake/audit.py#L99)
 
 Report on the maintainability of project files.
 
-## subtaskScore
-
-[[find in source code]](../../../fhmake/audit.py#L31)
+#### Signature
 
 ```python
-def subtaskScore(totalLines: int) -> None:
+def subtaskMaintainability() -> None:
+    ...
 ```
+
+
+
+## subtaskScore
+
+[Show source in audit.py:31](../../../fhmake/audit.py#L31)
 
 Calculate a score for the module files using the total
 number of lines and pylint output.
@@ -96,13 +118,18 @@ number of lines and pylint output.
 
 - `totalLines` *int* - total number of lines for /.
 
-## taskAudit
-
-[[find in source code]](../../../fhmake/audit.py#L131)
+#### Signature
 
 ```python
-def taskAudit(kwargs: list[str]) -> None:
+def subtaskScore(totalLines: int) -> None:
+    ...
 ```
+
+
+
+## taskAudit
+
+[Show source in audit.py:131](../../../fhmake/audit.py#L131)
 
 Do the audit task, this includes checking requirements are up to date
 security analysis and code complexity metrics
@@ -110,3 +137,12 @@ security analysis and code complexity metrics
 #### Arguments
 
 - `kwargs` *list[str]* - optional args
+
+#### Signature
+
+```python
+def taskAudit(kwargs: list[str]) -> None:
+    ...
+```
+
+

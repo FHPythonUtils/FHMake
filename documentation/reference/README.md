@@ -1,10 +1,9 @@
-# Fhmake Modules
+# Fhmake Index
 
-> Auto-generated documentation modules index.
+> Auto-generated documentation index.
 
-Full list of [Fhmake](README.md#fhmake-index) project modules.
+A full list of `Fhmake` project modules.
 
-- [Fhmake Index](README.md#fhmake-index)
 - [Fhmake](fhmake/index.md#fhmake)
     - [Module](fhmake/module.md#module)
     - [Audit](fhmake/audit.md#audit)
