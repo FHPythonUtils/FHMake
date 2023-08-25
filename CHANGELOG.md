@@ -3,6 +3,10 @@
 All major and minor version changes will be documented in this file. Details of
 patch-level version changes can be found in [commit messages](../../commits/master).
 
+## 2023 - 2023/08/25
+
+- Update deps
+
 ## 2022.2 - 2022/08/16
 
 - Update deps

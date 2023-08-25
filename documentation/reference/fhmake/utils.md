@@ -5,5 +5,4 @@
 Utils
 
 > Auto-generated documentation for [fhmake.utils](../../../fhmake/utils.py) module.
-
 - [Utils](#utils)

@@ -25,5 +25,3 @@ Run the install task.
 def taskInstall(kwargs: list[str]) -> None:
     ...
 ```
-
-

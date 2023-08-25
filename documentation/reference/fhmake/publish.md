@@ -25,5 +25,3 @@ Run the publish task.
 def taskPublish(kwargs: list[str]) -> None:
     ...
 ```
-
-
