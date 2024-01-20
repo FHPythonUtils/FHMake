@@ -1,8 +1,6 @@
 # Publish
 
-[Fhmake Index](../README.md#fhmake-index) /
-[Fhmake](./index.md#fhmake) /
-Publish
+[Fhmake Index](../README.md#fhmake-index) / [Fhmake](./index.md#fhmake) / Publish
 
 > Auto-generated documentation for [fhmake.publish](../../../fhmake/publish.py) module.
 
@@ -17,11 +15,11 @@ Run the publish task.
 
 #### Arguments
 
-- `kwargs` *list[str]* - additional args
+----
+ - `kwargs` *list[str]* - additional args
 
 #### Signature
 
 ```python
-def taskPublish(kwargs: list[str]) -> None:
-    ...
+def taskPublish(kwargs: list[str]) -> None: ...
 ```

@@ -9,6 +9,7 @@ def taskInstall(kwargs: list[str]) -> None:
 	"""Run the install task.
 
 	Args:
+	----
 		kwargs (list[str]): additional args
 	"""
 	_ = kwargs  # unused - silence pylint

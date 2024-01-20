@@ -1,13 +1,12 @@
 # Fhmake
 
-[Fhmake Index](../README.md#fhmake-index) /
-Fhmake
+[Fhmake Index](../README.md#fhmake-index) / Fhmake
 
 > Auto-generated documentation for [fhmake](../../../fhmake/__init__.py) module.
 
 #### Attributes
 
-- `COMMAND_MAP` - Add new subcommands here: `{'build': taskBuild, 'install': taskInstall, 'publish': taskPublish, 'audit': taskAudit}`
+- `COMMAND_MAP` - Add new subcommands here: {'build': taskBuild, 'install': taskInstall, 'publish': taskPublish, 'audit': taskAudit}
 
 
 - [Fhmake](#fhmake)
@@ -23,8 +22,7 @@ CLI entry point.
 #### Signature
 
 ```python
-def cli():
-    ...
+def cli() -> None: ...
 ```
 
 

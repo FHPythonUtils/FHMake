@@ -1,8 +1,6 @@
 # Build
 
-[Fhmake Index](../README.md#fhmake-index) /
-[Fhmake](./index.md#fhmake) /
-Build
+[Fhmake Index](../README.md#fhmake-index) / [Fhmake](./index.md#fhmake) / Build
 
 > Auto-generated documentation for [fhmake.build](../../../fhmake/build.py) module.
 
@@ -15,19 +13,18 @@ Build
 
 ## getDependencies
 
-[Show source in build.py:32](../../../fhmake/build.py#L32)
+[Show source in build.py:34](../../../fhmake/build.py#L34)
 
 Get our dependencies as a dictionary.
 
-#### Returns
-
-- `dict[str,` *str]* - [description]
+Returns
+-------
+ dict[str, str]: [description]
 
 #### Signature
 
 ```python
-def getDependencies() -> dict[str, Any]:
-    ...
+def getDependencies() -> dict[str, Any]: ...
 ```
 
 
@@ -40,64 +37,63 @@ Process a version string. This is pretty opinionated.
 
 #### Arguments
 
-- `version` *str* - the version
+----
+ - `version` *str* - the version
 
 #### Returns
 
-- `str` - the processed version
+-------
+ - `str` - the processed version
 
 #### Signature
 
 ```python
-def getProcVer(version: str) -> str:
-    ...
+def getProcVer(version: str) -> str: ...
 ```
 
 
 
 ## subtaskGenRequirements
 
-[Show source in build.py:41](../../../fhmake/build.py#L41)
+[Show source in build.py:44](../../../fhmake/build.py#L44)
 
 Generate the requirements files.
 
 #### Signature
 
 ```python
-def subtaskGenRequirements() -> None:
-    ...
+def subtaskGenRequirements() -> None: ...
 ```
 
 
 
 ## subtaskUpdatePyproject
 
-[Show source in build.py:72](../../../fhmake/build.py#L72)
+[Show source in build.py:75](../../../fhmake/build.py#L75)
 
 Update the pyproject.toml file with our shiny new version specifiers.
 
 #### Signature
 
 ```python
-def subtaskUpdatePyproject():
-    ...
+def subtaskUpdatePyproject() -> None: ...
 ```
 
 
 
 ## taskBuild
 
-[Show source in build.py:86](../../../fhmake/build.py#L86)
+[Show source in build.py:89](../../../fhmake/build.py#L89)
 
 Run the build task.
 
 #### Arguments
 
-- `kwargs` *list[str]* - additional args
+----
+ - `kwargs` *list[str]* - additional args
 
 #### Signature
 
 ```python
-def taskBuild(kwargs: list[str]) -> None:
-    ...
+def taskBuild(kwargs: list[str]) -> None: ...
 ```

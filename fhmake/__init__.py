@@ -1,4 +1,4 @@
-"""FredHappyface Makefile for python. Run one of the following subcommands
+"""FredHappyface Makefile for python. Run one of the following subcommands.
 
 install: Poetry install
 build: Build documentation, requirements.txt, and run poetry build
@@ -25,7 +25,7 @@ COMMAND_MAP = {
 HELP = f"subcommand must be one of {list(COMMAND_MAP.keys())}"
 
 
-def cli():
+def cli() -> None:
 	"""CLI entry point."""
 	parser = argparse.ArgumentParser(
 		description=__doc__, formatter_class=argparse.RawTextHelpFormatter

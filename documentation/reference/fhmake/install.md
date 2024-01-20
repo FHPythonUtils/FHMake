@@ -1,8 +1,6 @@
 # Install
 
-[Fhmake Index](../README.md#fhmake-index) /
-[Fhmake](./index.md#fhmake) /
-Install
+[Fhmake Index](../README.md#fhmake-index) / [Fhmake](./index.md#fhmake) / Install
 
 > Auto-generated documentation for [fhmake.install](../../../fhmake/install.py) module.
 
@@ -17,11 +15,11 @@ Run the install task.
 
 #### Arguments
 
-- `kwargs` *list[str]* - additional args
+----
+ - `kwargs` *list[str]* - additional args
 
 #### Signature
 
 ```python
-def taskInstall(kwargs: list[str]) -> None:
-    ...
+def taskInstall(kwargs: list[str]) -> None: ...
 ```

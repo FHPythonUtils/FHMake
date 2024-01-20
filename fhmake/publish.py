@@ -11,6 +11,7 @@ def taskPublish(kwargs: list[str]) -> None:
 	"""Run the publish task.
 
 	Args:
+	----
 		kwargs (list[str]): additional args
 	"""
 	_ = kwargs  # unused - silence pylint

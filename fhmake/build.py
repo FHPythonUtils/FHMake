@@ -3,22 +3,24 @@
 from __future__ import annotations
 
 from pathlib import Path
-from shutil import copy, rmtree
+from shutil import rmtree
 from typing import Any, cast
 
 import tomlkit
 import tomlkit.items
 
-from .utils import ANSI, _doSysExec, _getPyproject, _setPyproject
+from .utils import ANSI, PY, _doSysExec, _getPyproject, _setPyproject
 
 
 def getProcVer(version: str) -> str:
 	"""Process a version string. This is pretty opinionated.
 
 	Args:
+	----
 		version (str): the version
 
 	Returns:
+	-------
 		str: the processed version
 	"""
 	if version.startswith("^"):
@@ -32,7 +34,8 @@ def getProcVer(version: str) -> str:
 def getDependencies() -> dict[str, Any]:
 	"""Get our dependencies as a dictionary.
 
-	Returns:
+	Returns
+	-------
 		dict[str, str]: [description]
 	"""
 	return dict(**_getPyproject()["tool"]["poetry"]["dependencies"])
@@ -50,13 +53,13 @@ def subtaskGenRequirements() -> None:
 			if "optional" in dependent and dependent["optional"]:
 				requirementsOpt.append(
 					f"{requirement}"
-					+ f"{'['+dependent['extras'][0]+']' if 'extras' in dependent else ''}"
+					f"{'['+dependent['extras'][0]+']' if 'extras' in dependent else ''}"
 					f"{getProcVer(dependent['version'])}"
 				)
 			else:
 				requirements.append(
 					f"{requirement}"
-					+ f"{'['+dependent['extras'][0]+']' if 'extras' in dependent else ''}"
+					f"{'['+dependent['extras'][0]+']' if 'extras' in dependent else ''}"
 					f"{getProcVer(dependent['version'])}"
 				)
 		else:
@@ -69,7 +72,7 @@ def subtaskGenRequirements() -> None:
 	print("Done!\n")
 
 
-def subtaskUpdatePyproject():
+def subtaskUpdatePyproject() -> None:
 	"""Update the pyproject.toml file with our shiny new version specifiers."""
 	pyproject = _getPyproject()
 	dependencies = pyproject["tool"]["poetry"]["dependencies"]
@@ -87,6 +90,7 @@ def taskBuild(kwargs: list[str]) -> None:
 	"""Run the build task.
 
 	Args:
+	----
 		kwargs (list[str]): additional args
 	"""
 	_ = kwargs  # unused - silence pylint
@@ -103,7 +107,7 @@ def taskBuild(kwargs: list[str]) -> None:
 	)
 	rmtree("DOCS", ignore_errors=True)
 	docs = "documentation/reference"
-	print(_doSysExec(f"handsdown  --cleanup -o {docs}")[1].replace("\\", "/"))
+	print(_doSysExec(f"{PY} handsdown  --cleanup -o {docs}")[1].replace("\\", "/"))
 
 	# Generate requirements.txt
 	print(f"{ANSI['B']}{ANSI['U']}{ANSI['CG']}Requirements.txt{ANSI['CLR']}")
