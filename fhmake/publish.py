@@ -13,6 +13,7 @@ def taskPublish(kwargs: list[str]) -> None:
 	Args:
 	----
 		kwargs (list[str]): additional args
+
 	"""
 	_ = kwargs  # unused - silence pylint
 	print(f"{ANSI['B']}{ANSI['U']}{ANSI['CB']}Publish{ANSI['CLR']}")

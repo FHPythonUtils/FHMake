@@ -48,6 +48,7 @@ def _doSysExec(command: str) -> tuple[int, str]:
 	Returns:
 	-------
 		tuple[int, str]: return code + stdout
+
 	"""
 	with subprocess.Popen(
 		command,

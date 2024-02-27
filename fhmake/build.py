@@ -22,6 +22,7 @@ def getProcVer(version: str) -> str:
 	Returns:
 	-------
 		str: the processed version
+
 	"""
 	if version.startswith("^"):
 		major = int(version[1:].split(".")[0])
@@ -37,6 +38,7 @@ def getDependencies() -> dict[str, Any]:
 	Returns
 	-------
 		dict[str, str]: [description]
+
 	"""
 	return dict(**_getPyproject()["tool"]["poetry"]["dependencies"])
 
@@ -50,7 +52,7 @@ def subtaskGenRequirements() -> None:
 	for requirement in dependencies:
 		if isinstance(dependencies[requirement], dict):
 			dependent = dependencies[requirement]
-			if "optional" in dependent and dependent["optional"]:
+			if dependent.get("optional"):
 				requirementsOpt.append(
 					f"{requirement}"
 					f"{'['+dependent['extras'][0]+']' if 'extras' in dependent else ''}"
@@ -92,6 +94,7 @@ def taskBuild(kwargs: list[str]) -> None:
 	Args:
 	----
 		kwargs (list[str]): additional args
+
 	"""
 	_ = kwargs  # unused - silence pylint
 	# Update pyproject.toml version specifiers

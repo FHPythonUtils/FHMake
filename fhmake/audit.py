@@ -19,6 +19,7 @@ def getTotalLines() -> int:
 	Returns
 	-------
 		int: total number of lines
+
 	"""
 	totalLines = 0
 	for pyfile in Path.cwd().rglob("*.py"):
@@ -34,6 +35,7 @@ def subtaskScore(totalLines: int) -> None:
 	Args:
 	----
 		totalLines (int): total number of lines for /.
+
 	"""
 	# Bugs per KSLOC J. E. Gaffney, "Estimating the Number of Faults in Code,"
 	# in IEEE Transactions on Software Engineering, vol. SE-10, no. 4, pp.
@@ -81,6 +83,7 @@ def getCCGrade(complexity: float) -> str:
 	Returns:
 	-------
 		str: the grade
+
 	"""
 	return chr(65 + min(math.floor(complexity / 10.0) + (5 - complexity < 0), 5))
 
@@ -92,6 +95,7 @@ def subtaskDup(totalLines: int) -> None:
 	Args:
 	----
 		totalLines (int): total number of lines
+
 	"""
 	pylint = json.loads(
 		_doSysExec(
@@ -111,6 +115,7 @@ def taskAudit(kwargs: list[str]) -> None:
 	Args:
 	----
 		kwargs (list[str]): optional args
+
 	"""
 	# Total LOC
 	totalLines = getTotalLines()
