@@ -13,7 +13,7 @@
 
 ## getCCGrade
 
-[Show source in audit.py:74](../../../fhmake/audit.py#L74)
+[Show source in audit.py:76](../../../fhmake/audit.py#L76)
 
 Calculate the cc grade from the complexity.
 
@@ -55,7 +55,7 @@ def getTotalLines() -> int: ...
 
 ## subtaskDup
 
-[Show source in audit.py:88](../../../fhmake/audit.py#L88)
+[Show source in audit.py:91](../../../fhmake/audit.py#L91)
 
 Calculate the amount of duplicated code using the total number
 of lines and pylint output.
@@ -75,7 +75,7 @@ def subtaskDup(totalLines: int) -> None: ...
 
 ## subtaskScore
 
-[Show source in audit.py:30](../../../fhmake/audit.py#L30)
+[Show source in audit.py:31](../../../fhmake/audit.py#L31)
 
 Calculate a score for the module files using the total
 number of lines and pylint output.
@@ -95,7 +95,7 @@ def subtaskScore(totalLines: int) -> None: ...
 
 ## taskAudit
 
-[Show source in audit.py:107](../../../fhmake/audit.py#L107)
+[Show source in audit.py:111](../../../fhmake/audit.py#L111)
 
 Do the audit task, this includes checking requirements are up to date
 security analysis and code complexity metrics.

@@ -13,7 +13,7 @@
 
 ## getDependencies
 
-[Show source in build.py:34](../../../fhmake/build.py#L34)
+[Show source in build.py:35](../../../fhmake/build.py#L35)
 
 Get our dependencies as a dictionary.
 
@@ -55,7 +55,7 @@ def getProcVer(version: str) -> str: ...
 
 ## subtaskGenRequirements
 
-[Show source in build.py:44](../../../fhmake/build.py#L44)
+[Show source in build.py:46](../../../fhmake/build.py#L46)
 
 Generate the requirements files.
 
@@ -69,7 +69,7 @@ def subtaskGenRequirements() -> None: ...
 
 ## subtaskUpdatePyproject
 
-[Show source in build.py:75](../../../fhmake/build.py#L75)
+[Show source in build.py:77](../../../fhmake/build.py#L77)
 
 Update the pyproject.toml file with our shiny new version specifiers.
 
@@ -83,7 +83,7 @@ def subtaskUpdatePyproject() -> None: ...
 
 ## taskBuild
 
-[Show source in build.py:89](../../../fhmake/build.py#L89)
+[Show source in build.py:91](../../../fhmake/build.py#L91)
 
 Run the build task.
 
