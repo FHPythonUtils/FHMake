@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import platform
 import subprocess
-import typing
 from pathlib import Path
 
 import tomlkit
@@ -24,7 +23,7 @@ ANSI = {
 }
 
 
-def _getPyproject() -> typing.Any:
+def _getPyproject() -> dict:
 	"""Get the pyproject data."""
 	return tomlkit.parse(Path("pyproject.toml").read_text(encoding="utf-8"))
 

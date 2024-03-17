@@ -9,7 +9,7 @@ from typing import Any, cast
 import tomlkit
 import tomlkit.items
 
-from .utils import ANSI, PY, _doSysExec, _getPyproject, _setPyproject
+from fhmake.utils import ANSI, PY, _doSysExec, _getPyproject, _setPyproject
 
 
 def getProcVer(version: str) -> str:
@@ -26,7 +26,7 @@ def getProcVer(version: str) -> str:
 	"""
 	if version.startswith("^"):
 		major = int(version[1:].split(".")[0])
-		if major > 1990 or major == 0:  # if cal ver or zero ver
+		if major > 1990 or major == 0:   # noqa: PLR2004 # if cal ver or zero ver
 			return f"<{major + 2},>={version[1:]}"
 		return f"<{major + 1},>={version[1:]}"
 	return version

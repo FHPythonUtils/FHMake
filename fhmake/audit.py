@@ -10,7 +10,7 @@ import subprocess
 from pathlib import Path
 from sys import exit as sysexit
 
-from .utils import ANSI, NAME, _doSysExec
+from fhmake.utils import ANSI, NAME, _doSysExec
 
 
 def getTotalLines() -> int:
@@ -66,10 +66,11 @@ def subtaskScore(totalLines: int) -> None:
 		/ totalLines
 		* 100
 	) / averageBugsPerLine
-	rank = chr(65 + (score > 49) + (score > 99) + (score > 149) + (score > 199))
+	rank = chr(65 + (score > 49) + (score > 99) + (score > 149) + (score > 199))  # noqa: PLR2004
 	print(
 		f"{'Bugs':<26} (%) - {rank} {(score*averageBugsPerLine).__round__(1):>5}\n"
-		f"{ANSI['B']}{'Compared to Industry':<26} (%) - {rank} {(score).__round__(1):>5}{ANSI['CLR']}"
+		f"{ANSI['B']}{'Compared to Industry':<26} (%) - {rank} "
+		f"{(score).__round__(1):>5}{ANSI['CLR']}"
 	)
 
 
@@ -99,12 +100,13 @@ def subtaskDup(totalLines: int) -> None:
 	"""
 	pylint = json.loads(
 		_doSysExec(
-			"pylint --output-format=json --disable=all --enable=duplicate-code --min-similarity-lines 1 "
+			"pylint --output-format=json --disable=all "
+			"--enable=duplicate-code --min-similarity-lines 1 "
 			f" {NAME.lower()}"
 		)[1]
 	)
 	score = sum(message["message"].count("\n") for message in pylint) / totalLines * 100
-	rank = chr(65 + (score > 9) + (score > 19))
+	rank = chr(65 + (score > 9) + (score > 19))  # noqa: PLR2004
 	print(f"{ANSI['B']}{'Duplicates':<26} (%) - {rank} {score.__round__(1):>5}{ANSI['CLR']}")
 
 

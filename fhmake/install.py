@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from .utils import ANSI, _doSysExec
+from fhmake.utils import ANSI, _doSysExec
 
 
 def taskInstall(kwargs: list[str]) -> None:

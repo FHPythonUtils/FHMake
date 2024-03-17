@@ -73,6 +73,7 @@ ignore = [
 	"N802", "N803", "N806", "N812", "N813",  # pep8 naming
 	"PLR09",  # pylint refactor too many
 	"TCH",  # type check blocks
+	"T201", # print
 	"W191"  # ignore this to allow tabs
 ]
 fixable = ["ALL"]

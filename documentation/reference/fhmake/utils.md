@@ -11,7 +11,7 @@
 
 ## _doSysExec
 
-[Show source in utils.py:37](../../../fhmake/utils.py#L37)
+[Show source in utils.py:36](../../../fhmake/utils.py#L36)
 
 Execute a command and check for errors.
 
@@ -40,21 +40,21 @@ def _doSysExec(command: str) -> tuple[int, str]: ...
 
 ## _getPyproject
 
-[Show source in utils.py:27](../../../fhmake/utils.py#L27)
+[Show source in utils.py:26](../../../fhmake/utils.py#L26)
 
 Get the pyproject data.
 
 #### Signature
 
 ```python
-def _getPyproject() -> typing.Any: ...
+def _getPyproject() -> dict: ...
 ```
 
 
 
 ## _setPyproject
 
-[Show source in utils.py:32](../../../fhmake/utils.py#L32)
+[Show source in utils.py:31](../../../fhmake/utils.py#L31)
 
 Write the pyproject data back to file.
 

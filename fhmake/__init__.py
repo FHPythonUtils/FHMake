@@ -11,10 +11,10 @@ from __future__ import annotations
 
 import argparse
 
-from .audit import taskAudit
-from .build import taskBuild
-from .install import taskInstall
-from .publish import taskPublish
+from fhmake.audit import taskAudit
+from fhmake.build import taskBuild
+from fhmake.install import taskInstall
+from fhmake.publish import taskPublish
 
 # Add new subcommands here
 COMMAND_MAP = {

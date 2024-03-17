@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import subprocess
 
-from .utils import ANSI
+from fhmake.utils import ANSI
 
 
 def taskPublish(kwargs: list[str]) -> None:

@@ -2,6 +2,6 @@
 
 from __future__ import annotations
 
-from . import cli
+from fhmake import cli
 
 cli()
