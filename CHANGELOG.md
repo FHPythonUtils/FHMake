@@ -3,6 +3,11 @@
 All major and minor version changes will be documented in this file. Details of
 patch-level version changes can be found in [commit messages](../../commits/master).
 
+## 2024 - 2024/03/17
+
+- add 8 hour cache, fix pypi total downloads and remove repo size
+- improvements + fixes
+
 ## 2023 - 2023/08/25
 
 - Update deps
