@@ -15,7 +15,7 @@
 
 ## cli
 
-[Show source in __init__.py:28](../../../fhmake/__init__.py#L28)
+[Show source in __init__.py:29](../../../fhmake/__init__.py#L29)
 
 CLI entry point.
 

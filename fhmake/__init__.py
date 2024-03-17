@@ -6,6 +6,7 @@ publish: Run poetry publish (interactive)
 audit: dependency checking, security analysis and complexity/ Maintainability
 checking. Use with --fast to speed up the security analysis.
 """
+
 from __future__ import annotations
 
 import argparse
